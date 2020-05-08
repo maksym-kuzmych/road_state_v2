@@ -23,6 +23,8 @@ const IMAGE = {
   ICON_GEOLOCATION: require('../../images/geolocation.png'),
   ICON_PLUS: require('../../images/plus.png'),
   ICON_CROSS: require('../../images/cross.png'),
+  ICON_TIME: require('../../images/time.png'),
+  ICON_DISTANCE: require('../../images/distance.png'),
 };
 
 export {IMAGE};

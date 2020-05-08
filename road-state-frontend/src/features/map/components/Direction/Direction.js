@@ -1,33 +1,112 @@
 import React from 'react';
 import {View} from 'react-native';
-import {Marker} from 'react-native-maps';
-import MapViewDirections from 'react-native-maps-directions';
+import {Marker, Polyline as Route} from 'react-native-maps';
+import Polyline from '@mapbox/polyline';
 
 const GOOGLE_MAPS_APIKEY = 'AIzaSyArRVqnpPHZ-q2BMzjM62NmsU0885mHvLs';
 
 export default class Direction extends React.Component {
-  getIntermediateCoordinates = () => {
-    let destinationCoordinates = [];
+  constructor(props) {
+    super(props);
+    this.state = {
+      coords: null,
+      distance: {},
+      time: {},
+      intermediatePoints: {},
+    };
+
+    const interimDestinations = this.getInterimDestinations();
+    const apiInterimParams = this.convertInterimPointsToString(
+      interimDestinations,
+    );
+    const startLoc = `${this.props.resultTypes.pickUpLocation.latitude},${
+      this.props.resultTypes.pickUpLocation.longitude
+    }`;
+    const destLoc = `${this.props.resultTypes.dropOffLocation.latitude},${
+      this.props.resultTypes.dropOffLocation.longitude
+    }`;
+    this.getDirection(startLoc, destLoc, apiInterimParams, interimDestinations);
+  }
+
+  getInterimDestinations = () => {
+    let interimDestinations = [];
+
     if (this.props.resultTypes.intermediate_1.location) {
-      destinationCoordinates.push(
-        this.props.resultTypes.intermediate_1.location,
-      );
+      interimDestinations.push(this.props.resultTypes.intermediate_1.location);
     }
     if (this.props.resultTypes.intermediate_2.location) {
-      destinationCoordinates.push(
-        this.props.resultTypes.intermediate_2.location,
-      );
+      interimDestinations.push(this.props.resultTypes.intermediate_2.location);
     }
     if (this.props.resultTypes.intermediate_3.location) {
-      destinationCoordinates.push(
-        this.props.resultTypes.intermediate_3.location,
-      );
+      interimDestinations.push(this.props.resultTypes.intermediate_3.location);
     }
-    return destinationCoordinates;
+
+    return interimDestinations;
   };
 
+  convertInterimPointsToString = interimDestinations => {
+    let interimStr = '';
+    if (interimDestinations.length !== 0) {
+      for (let i = 0; i < interimDestinations.length; i++) {
+        let concatDest = '';
+        if (i !== interimDestinations.length - 1) {
+          concatDest = `${interimDestinations[i].latitude},${
+            interimDestinations[i].longitude
+          }|`;
+        } else {
+          concatDest = `${interimDestinations[i].latitude},${
+            interimDestinations[i].longitude
+          }`;
+        }
+        interimStr += concatDest;
+      }
+    }
+
+    return interimStr;
+  };
+
+  async getDirection(startLoc, destLoc, apiInterimParams, interimDestinations) {
+    try {
+      let resp;
+      if (apiInterimParams !== '') {
+        resp = await fetch(
+          `https://maps.googleapis.com/maps/api/directions/json?origin=${startLoc}&destination=${destLoc}&waypoints=${apiInterimParams}&key=${GOOGLE_MAPS_APIKEY}`,
+        );
+      } else {
+        resp = await fetch(
+          `https://maps.googleapis.com/maps/api/directions/json?origin=${startLoc}&destination=${destLoc}&key=${GOOGLE_MAPS_APIKEY}`,
+        );
+      }
+      const respJson = await resp.json();
+      const response = respJson.routes[0];
+      const distanceTime = response.legs[0];
+      const travelDistance = distanceTime.distance.text;
+      const travelTime = distanceTime.duration.text;
+      const points = Polyline.decode(
+        respJson.routes[0].overview_polyline.points,
+      );
+
+      const coordinates = points.map(point => {
+        return {
+          latitude: point[0],
+          longitude: point[1],
+        };
+      });
+
+      this.setState({
+        coords: coordinates,
+        distance: travelDistance,
+        time: travelTime,
+        intermediatePoints: interimDestinations,
+      });
+    } catch (error) {
+      console.log('Error: ', error);
+    }
+  }
+
   render() {
-    let intermediatePoints = this.getIntermediateCoordinates();
+    const {time, coords, intermediatePoints, distance} = this.state;
+
     return (
       <View>
         <Marker
@@ -35,15 +114,9 @@ export default class Direction extends React.Component {
           title="Origin Location"
           pinColor="green"
         />
-        <MapViewDirections
-          origin={this.props.resultTypes.pickUpLocation}
-          destination={this.props.resultTypes.dropOffLocation}
-          apikey={GOOGLE_MAPS_APIKEY}
-          strokeWidth={3}
-          waypoints={intermediatePoints}
-          strokeColor="blue"
-          splitWaypoints={true}
-        />
+        {coords && (
+          <Route strokeWidth={3} strokeColor="blue" coordinates={coords} />
+        )}
         {intermediatePoints.length
           ? intermediatePoints.map((marker, index) => (
               <Marker

@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import SearchBox from '../components/SearchBox/SearchBox';
 import SearchResults from '../components/SearchResults/SearchResults';
+import TimeAndDistance from '../components/TimeAndDistance/TimeAndDistance';
 
 export default class CustomDrawerContent extends React.Component {
   render() {
@@ -25,6 +26,7 @@ export default class CustomDrawerContent extends React.Component {
             resultTypes={this.props.resultTypes}
             routePoints={this.props.routePoints}
             buildRoute={this.props.buildRoute}
+            navigation={this.props.navigation}
           />
         </View>
         {(this.props.resultTypes.pickUp ||
@@ -37,6 +39,7 @@ export default class CustomDrawerContent extends React.Component {
             getSelectedAddress={this.props.getSelectedAddress}
           />
         )}
+        <TimeAndDistance />
         <TouchableOpacity
           style={styles.button}
           onPress={() => this.props.navigation.navigate('Map')}>

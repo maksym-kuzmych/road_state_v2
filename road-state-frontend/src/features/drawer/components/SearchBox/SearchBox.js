@@ -19,6 +19,7 @@ export default function SearchBox({
   removeIntermediatePoint,
   resultTypes,
   buildRoute,
+  navigation,
 }) {
   const [routeButtonEnabled, setRouteButtonEnabled] = useState(false);
   const {
@@ -120,13 +121,13 @@ export default function SearchBox({
           onFocus={() => toggleSearchResultModal('pickUp')}
           value={selectedPickUp && selectedPickUp.name}
         />
-        <TouchableOpacity style={styles.geoiconContainer}>
+        {/* <TouchableOpacity style={styles.geoiconContainer}>
           <Image
             source={IMAGE.ICON_GEOLOCATION}
             style={styles.icon}
             tintColor="#fff"
           />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
       {resultTypes.intermediate_1.visible === true && (
         <View style={styles.inputContainer}>
@@ -229,7 +230,10 @@ export default function SearchBox({
               : styles.buildRouteButtonDisabled
           }
           disabled={!routeButtonEnabled}
-          onPress={() => buildRoute(true)}>
+          onPress={() => {
+            buildRoute(true);
+            navigation.closeDrawer();
+          }}>
           <Text
             style={
               routeButtonEnabled
