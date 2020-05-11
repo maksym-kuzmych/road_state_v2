@@ -25,6 +25,7 @@ const IMAGE = {
   ICON_CROSS: require('../../images/cross.png'),
   ICON_TIME: require('../../images/time.png'),
   ICON_DISTANCE: require('../../images/distance.png'),
+  GENERAL_ROAD_CONDITION: require('../../images/general-road-condition.png'),
 };
 
 export {IMAGE};

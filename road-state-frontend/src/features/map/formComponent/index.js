@@ -21,6 +21,7 @@ export default class MapScreen extends React.Component {
       longtitude: 37.995209,
       error: null,
       destinationPoints: [],
+      marker: null,
     };
   }
 
@@ -83,10 +84,20 @@ export default class MapScreen extends React.Component {
           }}
           ref={ref => {
             this.mapRef = ref;
+          }}
+          onPress={e => {
+            this.setState({marker: e.nativeEvent.coordinate});
+            // console.log(e.nativeEvent.coordinate);
           }}>
           {this.props.resultTypes.buildRoute === true && (
-            <Direction resultTypes={this.props.resultTypes} />
+            <Direction
+              resultTypes={this.props.resultTypes}
+              getDirectionInfo={this.props.getDirectionInfo}
+              coordinates={this.props.directionInformation.directionCoordinates}
+              navigation={this.props.navigation}
+            />
           )}
+          {this.state.marker && <Marker coordinate={this.state.marker} />}
         </MapView>
         <CreateButton navigation={this.props.navigation} />
       </SafeAreaView>

@@ -26,6 +26,7 @@ export default class DrawerNavigator extends React.Component {
               removeIntermediatePoint={this.props.removeIntermediatePoint}
               routePoints={this.props.routePoints}
               buildRoute={this.props.buildRoute}
+              directionInformation={this.props.directionInformation}
             />
           )}>
           <Drawer.Screen name="Map" component={TabNavigator} />

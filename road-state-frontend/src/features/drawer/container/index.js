@@ -27,6 +27,11 @@ const mapStateToProps = state => ({
   },
   predictions: state.drawer.predictions || [],
   selectedAddress: state.drawer.selectedAddress || {},
+  directionInformation: state.map.directionInformation || {
+    travelDistance: {},
+    travelTime: {},
+    directionCoordinates: [],
+  },
 });
 
 const mapActionCreators = {

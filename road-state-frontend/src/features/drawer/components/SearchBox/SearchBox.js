@@ -30,6 +30,7 @@ export default function SearchBox({
     selectedDropOff,
   } = selectedAddress || {};
 
+  const pickUpTextInput = useRef(null);
   const isFirstUpdate = useRef(true);
   useEffect(() => {
     if (isFirstUpdate.current) {
@@ -114,6 +115,7 @@ export default function SearchBox({
           tintColor="#21bf73"
         />
         <TextInput
+          ref={pickUpTextInput}
           style={styles.textinput}
           placeholder="From"
           placeholderTextColor="#000"
@@ -256,32 +258,6 @@ export default function SearchBox({
       </View>
     </View>
   );
-}
-
-{
-  /* {intermediatePoints.map(item => (
-        <View key={item.id} style={styles.inputContainer}>
-          <Image
-            source={IMAGE.ICON_MARKER}
-            style={styles.icon}
-            tintColor="#0779e4"
-          />
-          <TextInput
-            style={styles.textinput}
-            placeholder="Through"
-            placeholderTextColor="#000"
-          />
-          <TouchableOpacity
-            style={styles.geoiconContainer}
-            onPress={() => removePoint(item.id)}>
-            <Image
-              source={IMAGE.ICON_CROSS}
-              style={styles.icon}
-              tintColor="#fff"
-            />
-          </TouchableOpacity>
-        </View>
-      ))} */
 }
 
 const styles = StyleSheet.create({

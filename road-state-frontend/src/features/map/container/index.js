@@ -1,4 +1,5 @@
 import {connect} from 'react-redux';
+import {getDirectionInfo} from '../modules/reducer';
 import MapScreen from '../formComponent/index';
 
 const mapStateToProps = state => ({
@@ -13,9 +14,16 @@ const mapStateToProps = state => ({
     showPoint: 0,
     buildRoute: null,
   },
+  directionInformation: state.map.directionInformation || {
+    travelDistance: {},
+    travelTime: {},
+    directionCoordinates: [],
+  },
 });
 
-const mapActionCreators = {};
+const mapActionCreators = {
+  getDirectionInfo,
+};
 
 const MapContainer = connect(
   mapStateToProps,

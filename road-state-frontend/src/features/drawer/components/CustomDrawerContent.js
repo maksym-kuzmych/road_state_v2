@@ -10,6 +10,7 @@ import {
 import SearchBox from '../components/SearchBox/SearchBox';
 import SearchResults from '../components/SearchResults/SearchResults';
 import TimeAndDistance from '../components/TimeAndDistance/TimeAndDistance';
+import MarksList from '../components/MarksList/MarksList';
 
 export default class CustomDrawerContent extends React.Component {
   render() {
@@ -39,7 +40,10 @@ export default class CustomDrawerContent extends React.Component {
             getSelectedAddress={this.props.getSelectedAddress}
           />
         )}
-        <TimeAndDistance />
+        <TimeAndDistance
+          directionInformation={this.props.directionInformation}
+        />
+        <MarksList directionInformation={this.props.directionInformation} />
         <TouchableOpacity
           style={styles.button}
           onPress={() => this.props.navigation.navigate('Map')}>

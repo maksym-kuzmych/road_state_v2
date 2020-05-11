@@ -16,7 +16,6 @@ export default function MapStack() {
     <StackMap.Navigator initialRouteName="Map">
       <StackMap.Screen
         name="Map"
-        // component={MapScreen}
         component={MapContainer}
         options={navOptionHandler}
       />
@@ -27,8 +26,7 @@ export default function MapStack() {
       />
       <StackMap.Screen
         name="CreateMark"
-        component={CurrentMarkScreen}
-        // component={CreateMarkScreen}
+        component={CreateMarkScreen}
         options={navOptionHandler}
       />
     </StackMap.Navigator>

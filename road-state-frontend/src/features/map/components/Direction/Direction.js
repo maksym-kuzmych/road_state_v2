@@ -2,6 +2,7 @@ import React from 'react';
 import {View} from 'react-native';
 import {Marker, Polyline as Route} from 'react-native-maps';
 import Polyline from '@mapbox/polyline';
+import ShowMarksOnRoad from '../ShowMarksOnRoad/ShowMarksOnRoad';
 
 const GOOGLE_MAPS_APIKEY = 'AIzaSyArRVqnpPHZ-q2BMzjM62NmsU0885mHvLs';
 
@@ -10,8 +11,6 @@ export default class Direction extends React.Component {
     super(props);
     this.state = {
       coords: null,
-      distance: {},
-      time: {},
       intermediatePoints: {},
     };
 
@@ -93,19 +92,25 @@ export default class Direction extends React.Component {
         };
       });
 
-      this.setState({
-        coords: coordinates,
+      const actionPayload = {
         distance: travelDistance,
         time: travelTime,
+        coords: coordinates,
+      };
+
+      this.setState({
+        coords: coordinates,
         intermediatePoints: interimDestinations,
       });
+
+      this.props.getDirectionInfo(actionPayload);
     } catch (error) {
       console.log('Error: ', error);
     }
   }
 
   render() {
-    const {time, coords, intermediatePoints, distance} = this.state;
+    const {coords, intermediatePoints} = this.state;
 
     return (
       <View>
@@ -131,6 +136,7 @@ export default class Direction extends React.Component {
           coordinate={this.props.resultTypes.dropOffLocation}
           title="Destination Location"
         />
+        {coords && <ShowMarksOnRoad navigation={this.props.navigation} routeCoords={coords} />}
       </View>
     );
   }

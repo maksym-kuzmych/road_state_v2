@@ -4,26 +4,49 @@ import {View, Body} from 'native-base';
 
 import {IMAGE} from '../../../../common/constants/image';
 
-export default function TimeAndDistance() {
-  return (
+export default function TimeAndDistance({directionInformation}) {
+  return directionInformation.travelDistance.length ? (
     <View style={styles.generalContainer}>
       <View style={styles.textContainer}>
         <View style={styles.itemContainer}>
           <Image source={IMAGE.ICON_DISTANCE} style={styles.icon} />
-          <Text style={styles.text}>Travelling Distance: 26 km</Text>
+          <Text>
+            <Text style={[styles.text, {fontWeight: 'bold'}]}>
+              Travel Distance:{' '}
+            </Text>
+            <Text style={styles.text}>
+              {directionInformation.travelDistance}
+            </Text>
+          </Text>
         </View>
         <View style={styles.itemContainer}>
           <Image source={IMAGE.ICON_TIME} style={styles.icon} />
-          <Text style={styles.text}>Travelling Time: 36 min</Text>
+          <Text>
+            <Text style={[styles.text, {fontWeight: 'bold'}]}>
+              Travel Time:{' '}
+            </Text>
+            <Text style={styles.text}>{directionInformation.travelTime}</Text>
+          </Text>
+        </View>
+        <View style={styles.itemContainer}>
+          <Image source={IMAGE.GENERAL_ROAD_CONDITION} style={styles.icon} />
+          <Text>
+            <Text style={[styles.text, {fontWeight: 'bold'}]}>
+              General road condition:{' '}
+            </Text>
+            <Text style={styles.text}>{directionInformation.travelTime}</Text>
+          </Text>
         </View>
       </View>
     </View>
-  );
+  ) : null;
 }
 
 const styles = StyleSheet.create({
   generalContainer: {
-    backgroundColor: '#fff',
+    paddingTop: 5,
+    paddingBottom: 5,
+    backgroundColor: '#ffe277',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -44,9 +67,7 @@ const styles = StyleSheet.create({
     width: '90%',
   },
   text: {
-    fontSize: 18,
+    fontSize: 16,
     marginLeft: 5,
-    borderBottomWidth: 2,
-    borderBottomColor: '#7D7D7D',
   },
 });
