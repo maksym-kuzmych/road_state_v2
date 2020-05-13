@@ -29,7 +29,7 @@ export default function TimeAndDistance({directionInformation}) {
           </Text>
         </View>
         <View style={styles.itemContainer}>
-          <Image source={IMAGE.GENERAL_ROAD_CONDITION} style={styles.icon} />
+          <Image source={IMAGE.ICON_GENERAL_ROAD_CONDITION} style={styles.icon} />
           <Text>
             <Text style={[styles.text, {fontWeight: 'bold'}]}>
               General road condition:{' '}

@@ -13,7 +13,7 @@ const {width} = Dimensions.get('window');
 const height = width * 0.6;
 const images = [IMAGE.ROAD_1, IMAGE.ROAD_2, IMAGE.ROAD_3, IMAGE.ROAD_4];
 
-export default function Slider() {
+export default function Slider({images}) {
   const [active, setActive] = useState(0);
 
   const change = ({nativeEvent}) => {
@@ -27,16 +27,15 @@ export default function Slider() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.headerText}>Photos: </Text>
       <ScrollView
         pagingEnabled
         showsHorizontalScrollIndicator={false}
         horizontal
         style={styles.container}
         onScroll={change}>
-        {images.map((item, index) => (
-          <Image key={index} style={styles.image} source={item} />
-        ))}
+        {images.map((item, index) => {
+          return <Image key={item.id} style={styles.image} source={item.url} />;
+        })}
       </ScrollView>
       <View style={styles.pagination}>
         {images.length && images.length > 1
@@ -56,11 +55,11 @@ export default function Slider() {
 }
 
 const styles = StyleSheet.create({
-  container: {width, height, marginTop: 10},
+  container: {width, height, marginTop: 5},
   image: {
     width,
     height,
-    resizeMode: 'cover',
+    resizeMode: 'stretch',
   },
   pagination: {
     flexDirection: 'row',
@@ -70,9 +69,4 @@ const styles = StyleSheet.create({
   },
   pagingText: {fontSize: width / 30, color: '#888', margin: 3},
   pagingActiveText: {fontSize: width / 30, color: '#fff', margin: 3},
-  headerText: {
-    fontSize: 15,
-    fontWeight: 'bold',
-    marginLeft: 10,
-  },
 });

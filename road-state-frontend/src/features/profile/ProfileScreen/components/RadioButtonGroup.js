@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
 import {IMAGE} from '../../../../common/constants/image';
 
-export default function RadioButtonGroup() {
+export default function RadioButtonGroup({hideModal}) {
   let [data, setData] = useState(['Русский', 'English']);
   let [checked, setChecked] = useState(0);
 
@@ -25,7 +25,10 @@ export default function RadioButtonGroup() {
             ) : (
               <TouchableOpacity
                 style={styles.button}
-                onPress={() => setChecked(Id)}>
+                onPress={() => {
+                  setChecked(Id);
+                  hideModal(false);
+                }}>
                 <Image
                   style={styles.icon}
                   source={IMAGE.ICON_RADIO_UNCHECKED}

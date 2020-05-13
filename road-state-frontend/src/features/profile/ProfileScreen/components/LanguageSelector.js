@@ -8,7 +8,7 @@ export default function LanguageSelector({hideModal}) {
       <View style={styles.container}>
         <View style={styles.mainView}>
           <Text style={styles.header}>Application language</Text>
-          <RadioButtonGroup />
+          <RadioButtonGroup hideModal={hideModal} />
           <TouchableOpacity
             style={styles.button}
             onPress={() => hideModal(false)}>
