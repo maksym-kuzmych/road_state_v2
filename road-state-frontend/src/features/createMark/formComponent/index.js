@@ -13,6 +13,7 @@ import Description from '../components/Description';
 import ConditionDropdown from '../components/ConditionDropdown';
 import Attachment from '../components/Attachment';
 import LocationPicker from '../components/LocationPicker';
+import Spinner from '../../spinner/index';
 
 export default class CreateMarkScreen extends React.Component {
   render() {
@@ -20,6 +21,7 @@ export default class CreateMarkScreen extends React.Component {
       <SafeAreaView style={{flex: 1}}>
         <CustomHeader title="New Mark" navigation={this.props.navigation} />
         <ScrollView>
+          {/* <Spinner /> */}
           <Root>
             <View style={{flex: 1, alignItems: 'center'}}>
               <Attachment />

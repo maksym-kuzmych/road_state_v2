@@ -33,6 +33,7 @@ const IMAGE = {
   ICON_CUSTOM_MARKER: require('../../images/customMarker.png'),
   ICON_DATE: require('../../images/date.png'),
   ICON_PHOTO: require('../../images/photo.png'),
+  ICON_SPINNER: require('../../images/spinner.png'),
 };
 
 export {IMAGE};
