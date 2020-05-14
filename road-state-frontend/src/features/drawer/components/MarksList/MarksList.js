@@ -13,7 +13,7 @@ export default function MarksList({directionInformation}) {
           alignItems: 'center',
           backgroundColor: 'lightblue',
         }}>
-        <Text style={{padding: 10, fontSize: 16}}>Issues locations</Text>
+        <Text style={{padding: 7, fontSize: 16}}>Issues locations</Text>
       </View>
       <ScrollView>
         <View style={styles.listItemContaier}>
@@ -127,7 +127,7 @@ export default function MarksList({directionInformation}) {
 
 const styles = StyleSheet.create({
   generalContainer: {
-    height: '51%',
+    height: '45%',
     backgroundColor: '#fff',
   },
   listItemContaier: {

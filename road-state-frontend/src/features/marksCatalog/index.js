@@ -9,7 +9,7 @@ export default function MarksCatalogScreen({navigation}) {
       <CustomHeader title="Marks Catalog" navigation={navigation} />
       <ScrollView>
         <View style={styles.container}>
-          <MarkCard />
+          <MarkCard navigation={navigation} />
           <MarkCard />
           <MarkCard />
           <MarkCard />

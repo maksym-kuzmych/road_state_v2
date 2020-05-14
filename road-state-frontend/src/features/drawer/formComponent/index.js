@@ -3,6 +3,9 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import CustomDrawerContent from '../components/CustomDrawerContent';
 import TabNavigator from '../../tabNavigation/index';
+// import AndroidKeyboardAdjust from 'react-native-android-keyboard-adjust';
+
+// AndroidKeyboardAdjust.setAlwaysHidden();
 
 const Drawer = createDrawerNavigator();
 

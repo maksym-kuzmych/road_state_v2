@@ -12,7 +12,7 @@ export default function CurrentMarkScreen({navigation}) {
     <SafeAreaView style={{flex: 1}}>
       <CustomHeader title="Current Mark" navigation={navigation} />
       <ScrollView>
-        <View>
+        <View style={{alignItems: 'center'}}>
           <Slider />
           <Description />
           <Information />

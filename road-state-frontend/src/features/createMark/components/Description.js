@@ -1,12 +1,14 @@
 import React from 'react';
 import {Text, View, TextInput, StyleSheet} from 'react-native';
+import AndroidKeyboardAdjust from 'react-native-android-keyboard-adjust';
+AndroidKeyboardAdjust.setAdjustPan();
 
 export default function Description() {
   return (
     <View style={styles.container}>
       <Text style={styles.headerText}>Description: </Text>
       <View style={styles.textContainer}>
-        <TextInput style={styles.text} multiline={true} numberOfLines={5} />
+        <TextInput style={styles.text} multiline={true} numberOfLines={3} maxLength={200} />
       </View>
     </View>
   );

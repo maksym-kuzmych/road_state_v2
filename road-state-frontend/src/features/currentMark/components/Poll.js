@@ -9,36 +9,23 @@ export default function Poll() {
         <Text style={styles.label}>
           Is this problem relevant at the moment?
         </Text>
-        <TouchableOpacity
-          style={{
-            height: 26,
-            width: 50,
-            backgroundColor: 'green',
-            borderRadius: 15,
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginRight: 5,
-          }}>
-          <Text style={styles.btnText}>Yes</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            height: 26,
-            width: 50,
-            backgroundColor: 'red',
-            borderRadius: 15,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-          <Text style={styles.btnText}>No</Text>
-        </TouchableOpacity>
+        <View style={{flexDirection: 'row'}}>
+          <TouchableOpacity
+            style={[styles.btnContainer, {backgroundColor: 'green'}]}>
+            <Text style={styles.btnText}>Yes</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.btnContainer, {backgroundColor: 'red'}]}>
+            <Text style={styles.btnText}>No</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  generalContainer: {width: '100%', marginTop: 10},
+  generalContainer: {width: '95%', marginTop: 10},
   headerText: {
     fontSize: 15,
     fontWeight: 'bold',
@@ -46,12 +33,25 @@ const styles = StyleSheet.create({
   },
   pollContainer: {
     marginTop: 10,
-    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderColor: '#7D7D7D',
+    borderWidth: 1,
+    borderRadius: 5,
   },
   label: {
     fontSize: 16,
-    marginLeft: 10,
-    marginRight: 7,
+    marginTop: 5,
+  },
+  btnContainer: {
+    height: 35,
+    width: 65,
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 5,
+    marginTop: 5,
+    marginBottom: 10,
   },
   btnText: {
     fontSize: 15,

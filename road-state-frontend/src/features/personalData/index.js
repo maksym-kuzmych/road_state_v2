@@ -1,14 +1,30 @@
 import * as React from 'react';
-import {Text, View, SafeAreaView} from 'react-native';
+import {
+  Text,
+  View,
+  SafeAreaView,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
+import {Root} from 'native-base';
 import CustomHeader from '../header/index';
+import PersonalDataContainer from './components/PersonalDataHeader';
+import DataContainer from './components/DataContainer';
 
 export default function PersonalDataScreen({navigation}) {
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: 'lightgrey'}}>
       <CustomHeader title="Personal Data" navigation={navigation} />
-      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text>Personal Data!</Text>
-      </View>
+      <Root>
+        <View
+          style={{flex: 1, justifyContent: 'flex-start', alignItems: 'center'}}>
+          <PersonalDataContainer />
+          <DataContainer />
+        </View>
+      </Root>
     </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({});

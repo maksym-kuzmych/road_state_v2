@@ -1,29 +1,30 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, Image} from 'react-native';
 import {Marker} from 'react-native-maps';
+import {IMAGE} from '../../../../common/constants/image';
 
 export default class ShowMarksOnRoad extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       markerOnRoad: {
-        longtitude: 37.90834229439497,
+        longitude: 37.90834229439497,
         latitude: 48.69394284513635,
       },
       markerNotOnRoad: {
-        longtitude: 37.81017009168864,
+        longitude: 37.81017009168864,
         latitude: 48.71778749205081,
       },
       marksArray: [
         {
           location: {
-            longtitude: 37.90834,
+            longitude: 37.90834,
             latitude: 48.69394,
           },
         },
         {
           location: {
-            longtitude: 37.81017,
+            longitude: 37.81017,
             latitude: 48.71778,
           },
         },
@@ -67,7 +68,7 @@ export default class ShowMarksOnRoad extends React.Component {
         roadLocations[i + 1],
       );
       const mult =
-        pointLocation.longtitude * linearCoeffs.slope + linearCoeffs.intercept;
+        pointLocation.longitude * linearCoeffs.slope + linearCoeffs.intercept;
       const subtraction = pointLocation.latitude - errorSize;
       const sum = pointLocation.latitude + errorSize;
       if (mult >= subtraction && mult <= sum) {
@@ -96,10 +97,11 @@ export default class ShowMarksOnRoad extends React.Component {
           key={i}
           coordinate={{
             latitude: marker.location.latitude,
-            longitude: marker.location.longtitude,
+            longitude: marker.location.longitude,
           }}
-          onPress={() => this.props.navigation.navigate('CurrentMark')}
-        />
+          onPress={() => this.props.navigation.navigate('CurrentMark')}>
+          <Image source={IMAGE.ICON_CUSTOM_MARKER} />
+        </Marker>
       ));
     }
   };

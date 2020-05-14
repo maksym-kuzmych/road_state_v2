@@ -18,7 +18,7 @@ export default class MapScreen extends React.Component {
     this.mapRef = null;
     this.state = {
       latitude: 48.591765,
-      longtitude: 37.995209,
+      longitude: 37.995209,
       error: null,
       destinationPoints: [],
       marker: null,
@@ -30,7 +30,7 @@ export default class MapScreen extends React.Component {
       position => {
         this.setState({
           latitude: position.coords.latitude,
-          longtitude: position.coords.longtitude,
+          longitude: position.coords.longitude,
         });
       },
       error => this.setState({error: error.message}),
@@ -77,8 +77,10 @@ export default class MapScreen extends React.Component {
           style={styles.map}
           provider={PROVIDER_GOOGLE}
           initialRegion={{
-            latitude: this.state.latitude,
-            longitude: this.state.longtitude,
+            //latitude: this.state.latitude,
+            //longitude: this.state.longitude,
+            latitude: 48.591765,
+            longitude: 37.995209,
             latitudeDelta: 0.015,
             longitudeDelta: 0.0121,
           }}

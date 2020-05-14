@@ -34,7 +34,7 @@ export default function TimeAndDistance({directionInformation}) {
             <Text style={[styles.text, {fontWeight: 'bold'}]}>
               General road condition:{' '}
             </Text>
-            <Text style={styles.text}>{directionInformation.travelTime}</Text>
+            <Text style={styles.text}>Average</Text>
           </Text>
         </View>
       </View>

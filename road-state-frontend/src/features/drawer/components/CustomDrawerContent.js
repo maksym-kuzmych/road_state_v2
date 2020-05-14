@@ -44,11 +44,13 @@ export default class CustomDrawerContent extends React.Component {
           directionInformation={this.props.directionInformation}
         />
         <MarksList directionInformation={this.props.directionInformation} />
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => this.props.navigation.navigate('Map')}>
-          <Text>Back to Map</Text>
-        </TouchableOpacity>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity
+            style={{paddingVertical: 10, marginLeft: 15}}
+            onPress={() => this.props.navigation.navigate('Map')}>
+            <Text>Back to Map</Text>
+          </TouchableOpacity>
+        </View>
       </SafeAreaView>
     );
   }
@@ -60,11 +62,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#59b2af',
   },
-  button: {
+  buttonContainer: {
     position: 'absolute',
-    bottom: 10,
-    left: 15,
+    bottom: 0,
     flexDirection: 'row',
     flexWrap: 'wrap',
+    width: '100%',
+    backgroundColor: '#fff'
   },
 });

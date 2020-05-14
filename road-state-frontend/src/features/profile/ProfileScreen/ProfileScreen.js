@@ -2,7 +2,7 @@ import * as React from 'react';
 import AuthorizedScreen from '../ProfileScreen/AuthorizedScreen';
 import UnauthorizedScreen from '../ProfileScreen/UnauthorizedScreen';
 
-const authorized = false;
+const authorized = true;
 
 export default function ProfileScreen({navigation}) {
   if (authorized == true) {

@@ -1,9 +1,8 @@
 import * as React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-// import MapScreen from '../formComponent/index';
 import MapContainer from '../container/index';
 import CurrentMarkScreen from '../../currentMark/index';
-import CreateMarkScreen from '../../createMark/index';
+import CreateMarkContainer from '../../createMark/container/index';
 
 const navOptionHandler = () => ({
   headerShown: false,
@@ -26,8 +25,12 @@ export default function MapStack() {
       />
       <StackMap.Screen
         name="CreateMark"
-        component={CreateMarkScreen}
-        options={navOptionHandler}
+        component={CreateMarkContainer}
+        // component={CurrentMarkScreen}
+        options={()=>({
+          headerShown: false,
+          tabBarVisible:false,
+        })}
       />
     </StackMap.Navigator>
   );

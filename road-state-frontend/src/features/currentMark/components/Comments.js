@@ -35,6 +35,7 @@ export default class Comments extends React.Component {
             placeholder="Leave a comment"
             onChangeText={text => this.setState({inputComment: text})}
             value={inputComment}
+            maxLength={40}
           />
           {inputComment !== '' ? (
             <View style={styles.sendIconContainer}>

@@ -108,114 +108,129 @@ export default function SearchBox({
 
   return (
     <View>
-      <View style={styles.inputContainer}>
-        <Image
-          source={IMAGE.ICON_MARKER}
-          style={styles.icon}
-          tintColor="#21bf73"
-        />
-        <TextInput
-          ref={pickUpTextInput}
-          style={styles.textinput}
-          placeholder="From"
-          placeholderTextColor="#000"
-          onChangeText={handleInput.bind(this, 'pickUp')}
-          onFocus={() => toggleSearchResultModal('pickUp')}
-          value={selectedPickUp && selectedPickUp.name}
-        />
-      </View>
-      {resultTypes.intermediate_1.visible === true && (
+      <View style={{marginTop: 5, width: '100%'}}>
+        <Text style={styles.inputLabel}>Origin locataion:</Text>
         <View style={styles.inputContainer}>
           <Image
             source={IMAGE.ICON_MARKER}
             style={styles.icon}
-            tintColor="#0779e4"
+            tintColor="#21bf73"
           />
           <TextInput
+            ref={pickUpTextInput}
             style={styles.textinput}
-            placeholder="Through"
+            placeholder="From"
             placeholderTextColor="#000"
-            onChangeText={handleInput.bind(this, 'intermediate_1')}
-            onFocus={() => toggleSearchResultModal('intermediate_1')}
-            value={selectedIntermediate_1 && selectedIntermediate_1.name}
+            onChangeText={handleInput.bind(this, 'pickUp')}
+            onFocus={() => toggleSearchResultModal('pickUp')}
+            value={selectedPickUp && selectedPickUp.name}
           />
-          <TouchableOpacity
-            style={styles.geoiconContainer}
-            onPress={() => handleRemovePoint(resultTypes.intermediate_1.id)}>
+        </View>
+      </View>
+      {resultTypes.intermediate_1.visible === true && (
+        <View style={{width: '100%'}}>
+          <Text style={styles.inputLabel}>Intermediate locataion:</Text>
+          <View style={styles.inputContainer}>
             <Image
-              source={IMAGE.ICON_CROSS}
+              source={IMAGE.ICON_MARKER}
               style={styles.icon}
-              tintColor="#fff"
+              tintColor="#0779e4"
             />
-          </TouchableOpacity>
+            <TextInput
+              style={styles.textinput}
+              placeholder="Through"
+              placeholderTextColor="#000"
+              onChangeText={handleInput.bind(this, 'intermediate_1')}
+              onFocus={() => toggleSearchResultModal('intermediate_1')}
+              value={selectedIntermediate_1 && selectedIntermediate_1.name}
+            />
+            <TouchableOpacity
+              style={styles.geoiconContainer}
+              onPress={() => handleRemovePoint(resultTypes.intermediate_1.id)}>
+              <Image
+                source={IMAGE.ICON_CROSS}
+                style={styles.icon}
+                tintColor="#fff"
+              />
+            </TouchableOpacity>
+          </View>
         </View>
       )}
       {resultTypes.intermediate_2.visible === true && (
-        <View style={styles.inputContainer}>
-          <Image
-            source={IMAGE.ICON_MARKER}
-            style={styles.icon}
-            tintColor="#0779e4"
-          />
-          <TextInput
-            style={styles.textinput}
-            placeholder="Through"
-            placeholderTextColor="#000"
-            onChangeText={handleInput.bind(this, 'intermediate_2')}
-            onFocus={() => toggleSearchResultModal('intermediate_2')}
-            value={selectedIntermediate_2 && selectedIntermediate_2.name}
-          />
-          <TouchableOpacity
-            style={styles.geoiconContainer}
-            onPress={() => handleRemovePoint(resultTypes.intermediate_2.id)}>
+        <View style={{width: '100%'}}>
+          <Text style={styles.inputLabel}>Interim locataion:</Text>
+          <View style={styles.inputContainer}>
             <Image
-              source={IMAGE.ICON_CROSS}
+              source={IMAGE.ICON_MARKER}
               style={styles.icon}
-              tintColor="#fff"
+              tintColor="#0779e4"
             />
-          </TouchableOpacity>
+            <TextInput
+              style={styles.textinput}
+              placeholder="Through"
+              placeholderTextColor="#000"
+              onChangeText={handleInput.bind(this, 'intermediate_2')}
+              onFocus={() => toggleSearchResultModal('intermediate_2')}
+              value={selectedIntermediate_2 && selectedIntermediate_2.name}
+            />
+            <TouchableOpacity
+              style={styles.geoiconContainer}
+              onPress={() => handleRemovePoint(resultTypes.intermediate_2.id)}>
+              <Image
+                source={IMAGE.ICON_CROSS}
+                style={styles.icon}
+                tintColor="#fff"
+              />
+            </TouchableOpacity>
+          </View>
         </View>
       )}
       {resultTypes.intermediate_3.visible === true && (
+        <View style={{width: '100%'}}>
+          <Text style={styles.inputLabel}>Interim locataion:</Text>
+          <View style={styles.inputContainer}>
+            <Image
+              source={IMAGE.ICON_MARKER}
+              style={styles.icon}
+              tintColor="#0779e4"
+            />
+            <TextInput
+              style={styles.textinput}
+              placeholder="Through"
+              placeholderTextColor="#000"
+              onChangeText={handleInput.bind(this, 'intermediate_3')}
+              onFocus={() => toggleSearchResultModal('intermediate_3')}
+              value={selectedIntermediate_3 && selectedIntermediate_3.name}
+            />
+            <TouchableOpacity
+              style={styles.geoiconContainer}
+              onPress={() => handleRemovePoint(resultTypes.intermediate_3.id)}>
+              <Image
+                source={IMAGE.ICON_CROSS}
+                style={styles.icon}
+                tintColor="#fff"
+              />
+            </TouchableOpacity>
+          </View>
+        </View>
+      )}
+      <View style={{width: '100%'}}>
+        <Text style={styles.inputLabel}>Destination locataion:</Text>
         <View style={styles.inputContainer}>
           <Image
             source={IMAGE.ICON_MARKER}
             style={styles.icon}
-            tintColor="#0779e4"
+            tintColor="#c70039"
           />
           <TextInput
             style={styles.textinput}
-            placeholder="Through"
+            placeholder="To"
             placeholderTextColor="#000"
-            onChangeText={handleInput.bind(this, 'intermediate_3')}
-            onFocus={() => toggleSearchResultModal('intermediate_3')}
-            value={selectedIntermediate_3 && selectedIntermediate_3.name}
+            onChangeText={handleInput.bind(this, 'dropOff')}
+            onFocus={() => toggleSearchResultModal('dropOff')}
+            value={selectedDropOff && selectedDropOff.name}
           />
-          <TouchableOpacity
-            style={styles.geoiconContainer}
-            onPress={() => handleRemovePoint(resultTypes.intermediate_3.id)}>
-            <Image
-              source={IMAGE.ICON_CROSS}
-              style={styles.icon}
-              tintColor="#fff"
-            />
-          </TouchableOpacity>
         </View>
-      )}
-      <View style={styles.inputContainer}>
-        <Image
-          source={IMAGE.ICON_MARKER}
-          style={styles.icon}
-          tintColor="#c70039"
-        />
-        <TextInput
-          style={styles.textinput}
-          placeholder="To"
-          placeholderTextColor="#000"
-          onChangeText={handleInput.bind(this, 'dropOff')}
-          onFocus={() => toggleSearchResultModal('dropOff')}
-          value={selectedDropOff && selectedDropOff.name}
-        />
       </View>
       <View style={{flexDirection: 'row'}}>
         <TouchableOpacity
@@ -258,6 +273,12 @@ const styles = StyleSheet.create({
     flex: 1,
     alignSelf: 'stretch',
   },
+  inputLabel: {
+    fontSize: 15,
+    marginLeft: 5,
+    color: '#f7f7f7',
+    fontWeight: 'bold',
+  },
   icon: {
     padding: 10,
     margin: 5,
@@ -272,7 +293,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   inputContainer: {
-    marginTop: 10,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',

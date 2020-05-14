@@ -8,6 +8,15 @@ export default function Information() {
       <Text style={styles.headerText}>General information: </Text>
       <View style={styles.infoContainer}>
         <View style={styles.itemContainer}>
+          <Image source={IMAGE.ICON_DATE} style={styles.icon} />
+          <Text>
+            <Text style={[styles.text, {fontWeight: 'bold'}]}>
+              Creation Date:{' '}
+            </Text>
+            <Text style={styles.text}>14.05.2020</Text>
+          </Text>
+        </View>
+        <View style={styles.itemContainer}>
           <Image source={IMAGE.ICON_MARKER} style={styles.icon} />
           <Text>
             <Text style={[styles.text, {fontWeight: 'bold'}]}>Location: </Text>
@@ -20,9 +29,7 @@ export default function Information() {
             style={styles.icon}
           />
           <Text>
-            <Text style={[styles.text, {fontWeight: 'bold'}]}>
-              General condition:{' '}
-            </Text>
+            <Text style={[styles.text, {fontWeight: 'bold'}]}>Condition: </Text>
             <Text style={styles.text}>Bad</Text>
           </Text>
         </View>
@@ -39,7 +46,7 @@ export default function Information() {
 }
 
 const styles = StyleSheet.create({
-  container: {width: '100%', marginTop: 10},
+  container: {width: '95%', marginTop: 10},
   headerText: {
     fontSize: 15,
     fontWeight: 'bold',
@@ -48,8 +55,8 @@ const styles = StyleSheet.create({
   infoContainer: {
     marginTop: 10,
     borderColor: '#7D7D7D',
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
+    borderWidth: 1,
+    borderRadius: 5,
   },
   itemContainer: {
     flexDirection: 'row',

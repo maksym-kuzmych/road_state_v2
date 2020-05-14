@@ -30,6 +30,9 @@ const IMAGE = {
   ICON_STAR: require('../../images/star.png'),
   ICON_CLOSE: require('../../images/close.png'),
   ICON_CHECK: require('../../images/check.png'),
+  ICON_CUSTOM_MARKER: require('../../images/customMarker.png'),
+  ICON_DATE: require('../../images/date.png'),
+  ICON_PHOTO: require('../../images/photo.png'),
 };
 
 export {IMAGE};

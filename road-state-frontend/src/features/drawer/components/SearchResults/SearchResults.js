@@ -44,7 +44,7 @@ export default function SearchResults({predictions, getSelectedAddress}) {
 
 const styles = StyleSheet.create({
   generalContainer: {
-    height: '72%',
+    // height: '72%',
     backgroundColor: '#fff',
   },
   listItemContaier: {
