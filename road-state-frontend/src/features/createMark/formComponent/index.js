@@ -17,15 +17,27 @@ import Spinner from '../../spinner/index';
 
 export default class CreateMarkScreen extends React.Component {
   render() {
+    const {
+      navigation,
+      resultTypes,
+      getCreateLocation,
+      selectedLocation,
+    } = this.props;
+    
     return (
       <SafeAreaView style={{flex: 1}}>
-        <CustomHeader title="New Mark" navigation={this.props.navigation} />
+        <CustomHeader title="New Mark" navigation={navigation} />
         <ScrollView>
           {/* <Spinner /> */}
           <Root>
             <View style={{flex: 1, alignItems: 'center'}}>
               <Attachment />
-              <LocationPicker buildRoute={this.props.resultTypes.buildRoute} />
+              <LocationPicker
+                buildRoute={resultTypes.buildRoute}
+                navigation={navigation}
+                getCreateLocation={getCreateLocation}
+                selectedLocation={selectedLocation}
+              />
               <ConditionDropdown />
               <Description />
             </View>

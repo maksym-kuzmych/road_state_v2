@@ -34,7 +34,9 @@ export default class ShowMarksOnRoad extends React.Component {
   }
 
   componentDidMount() {
-    this.isOnRoadFull(this.state.marksArray, this.props.routeCoords);
+    const {marksArray} = this.state;
+    const {routeCoords} = this.props;
+    this.isOnRoadFull(marksArray, routeCoords);
   }
 
   isOnRoadFull = (arrayBr, arrayPoints) => {
@@ -90,7 +92,9 @@ export default class ShowMarksOnRoad extends React.Component {
   };
 
   renderMarkers = () => {
+    const {navigation} = this.props;
     const {roadMarks} = this.state;
+
     if (roadMarks && roadMarks.length !== 0) {
       return roadMarks.map((marker, i) => (
         <Marker
@@ -99,7 +103,7 @@ export default class ShowMarksOnRoad extends React.Component {
             latitude: marker.location.latitude,
             longitude: marker.location.longitude,
           }}
-          onPress={() => this.props.navigation.navigate('CurrentMark')}>
+          onPress={() => navigation.navigate('CurrentMark')}>
           <Image source={IMAGE.ICON_CUSTOM_MARKER} />
         </Marker>
       ));

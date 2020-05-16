@@ -14,30 +14,32 @@ export default class Direction extends React.Component {
       intermediatePoints: {},
     };
 
+    const {resultTypes} = this.props;
     const interimDestinations = this.getInterimDestinations();
     const apiInterimParams = this.convertInterimPointsToString(
       interimDestinations,
     );
-    const startLoc = `${this.props.resultTypes.pickUpLocation.latitude},${
-      this.props.resultTypes.pickUpLocation.longitude
+    const startLoc = `${resultTypes.pickUpLocation.latitude},${
+      resultTypes.pickUpLocation.longitude
     }`;
-    const destLoc = `${this.props.resultTypes.dropOffLocation.latitude},${
-      this.props.resultTypes.dropOffLocation.longitude
+    const destLoc = `${resultTypes.dropOffLocation.latitude},${
+      resultTypes.dropOffLocation.longitude
     }`;
     this.getDirection(startLoc, destLoc, apiInterimParams, interimDestinations);
   }
 
   getInterimDestinations = () => {
+    const {resultTypes} = this.props;
     let interimDestinations = [];
 
-    if (this.props.resultTypes.intermediate_1.location) {
-      interimDestinations.push(this.props.resultTypes.intermediate_1.location);
+    if (resultTypes.intermediate_1.location) {
+      interimDestinations.push(resultTypes.intermediate_1.location);
     }
-    if (this.props.resultTypes.intermediate_2.location) {
-      interimDestinations.push(this.props.resultTypes.intermediate_2.location);
+    if (resultTypes.intermediate_2.location) {
+      interimDestinations.push(resultTypes.intermediate_2.location);
     }
-    if (this.props.resultTypes.intermediate_3.location) {
-      interimDestinations.push(this.props.resultTypes.intermediate_3.location);
+    if (resultTypes.intermediate_3.location) {
+      interimDestinations.push(resultTypes.intermediate_3.location);
     }
 
     return interimDestinations;
@@ -66,6 +68,7 @@ export default class Direction extends React.Component {
 
   async getDirection(startLoc, destLoc, apiInterimParams, interimDestinations) {
     try {
+      const {getDirectionInfo} = this.props;
       let resp;
       if (apiInterimParams !== '') {
         resp = await fetch(
@@ -102,20 +105,20 @@ export default class Direction extends React.Component {
         coords: coordinates,
         intermediatePoints: interimDestinations,
       });
-
-      this.props.getDirectionInfo(actionPayload);
+      getDirectionInfo(actionPayload);
     } catch (error) {
       console.log('Error: ', error);
     }
   }
 
   render() {
+    const {resultTypes, navigation} = this.props;
     const {coords, intermediatePoints} = this.state;
-
+    
     return (
       <View>
         <Marker
-          coordinate={this.props.resultTypes.pickUpLocation}
+          coordinate={resultTypes.pickUpLocation}
           title="Origin Location"
           pinColor="green"
         />
@@ -133,10 +136,12 @@ export default class Direction extends React.Component {
             ))
           : null}
         <Marker
-          coordinate={this.props.resultTypes.dropOffLocation}
+          coordinate={resultTypes.dropOffLocation}
           title="Destination Location"
         />
-        {coords && <ShowMarksOnRoad navigation={this.props.navigation} routeCoords={coords} />}
+        {coords && (
+          <ShowMarksOnRoad navigation={navigation} routeCoords={coords} />
+        )}
       </View>
     );
   }

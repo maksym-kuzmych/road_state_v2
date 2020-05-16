@@ -1,5 +1,6 @@
 import {connect} from 'react-redux';
 import {getDirectionInfo} from '../modules/reducer';
+import {getCreateLocation, getSelectedLocation} from '../../createMark/modules/reducer';
 import MapScreen from '../formComponent/index';
 
 const mapStateToProps = state => ({
@@ -19,10 +20,13 @@ const mapStateToProps = state => ({
     travelTime: {},
     directionCoordinates: [],
   },
+  chooseLocation: state.markCreate.chooseLocation || {},
 });
 
 const mapActionCreators = {
   getDirectionInfo,
+  getCreateLocation,
+  getSelectedLocation
 };
 
 const MapContainer = connect(

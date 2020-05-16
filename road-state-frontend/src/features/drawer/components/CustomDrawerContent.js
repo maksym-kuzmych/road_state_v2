@@ -14,40 +14,54 @@ import MarksList from '../components/MarksList/MarksList';
 
 export default class CustomDrawerContent extends React.Component {
   render() {
+    const {
+      getInputData,
+      toggleSearchResultModal,
+      getAddressPredictions,
+      selectedAddress,
+      addIntermediatePoint,
+      removeIntermediatePoint,
+      resultTypes,
+      routePoints,
+      buildRoute,
+      navigation,
+      predictions,
+      getSelectedAddress,
+      directionInformation,
+    } = this.props;
+
     return (
       <SafeAreaView style={{flex: 1}}>
         <View style={styles.container}>
           <SearchBox
-            getInputData={this.props.getInputData}
-            toggleSearchResultModal={this.props.toggleSearchResultModal}
-            getAddressPredictions={this.props.getAddressPredictions}
-            selectedAddress={this.props.selectedAddress}
-            addIntermediatePoint={this.props.addIntermediatePoint}
-            removeIntermediatePoint={this.props.removeIntermediatePoint}
-            resultTypes={this.props.resultTypes}
-            routePoints={this.props.routePoints}
-            buildRoute={this.props.buildRoute}
-            navigation={this.props.navigation}
+            getInputData={getInputData}
+            toggleSearchResultModal={toggleSearchResultModal}
+            getAddressPredictions={getAddressPredictions}
+            selectedAddress={selectedAddress}
+            addIntermediatePoint={addIntermediatePoint}
+            removeIntermediatePoint={removeIntermediatePoint}
+            resultTypes={resultTypes}
+            routePoints={routePoints}
+            buildRoute={buildRoute}
+            navigation={navigation}
           />
         </View>
-        {(this.props.resultTypes.pickUp ||
-          this.props.resultTypes.intermediate_1.selected === true ||
-          this.props.resultTypes.intermediate_2.selected === true ||
-          this.props.resultTypes.intermediate_3.selected === true ||
-          this.props.resultTypes.dropOff) && (
+        {(resultTypes.pickUp ||
+          resultTypes.intermediate_1.selected === true ||
+          resultTypes.intermediate_2.selected === true ||
+          resultTypes.intermediate_3.selected === true ||
+          resultTypes.dropOff) && (
           <SearchResults
-            predictions={this.props.predictions}
-            getSelectedAddress={this.props.getSelectedAddress}
+            predictions={predictions}
+            getSelectedAddress={getSelectedAddress}
           />
         )}
-        <TimeAndDistance
-          directionInformation={this.props.directionInformation}
-        />
-        <MarksList directionInformation={this.props.directionInformation} />
+        <TimeAndDistance directionInformation={directionInformation} />
+        <MarksList directionInformation={directionInformation} />
         <View style={styles.buttonContainer}>
           <TouchableOpacity
             style={{paddingVertical: 10, marginLeft: 15}}
-            onPress={() => this.props.navigation.navigate('Map')}>
+            onPress={() => navigation.navigate('Map')}>
             <Text>Back to Map</Text>
           </TouchableOpacity>
         </View>
@@ -68,6 +82,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     width: '100%',
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
   },
 });

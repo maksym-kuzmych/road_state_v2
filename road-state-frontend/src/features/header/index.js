@@ -2,11 +2,26 @@ import * as React from 'react';
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import {IMAGE} from '../../common/constants/image';
 
-export default function CustomHeader({title, isHome, navigation}) {
+export default function CustomHeader({
+  title,
+  isHome,
+  navigation,
+  chooseLocation,
+  getCreateLocation,
+}) {
+  const handelBackNavigation = () => {
+    if (chooseLocation === true) {
+      getCreateLocation(false);
+      navigation.navigate('CreateMark');
+    } else {
+      navigation.goBack();
+    }
+  };
+  
   return (
     <View style={styles.container} elevation={15}>
       <View style={styles.leftView}>
-        {isHome ? (
+        {isHome && chooseLocation !== true ? (
           <TouchableOpacity onPress={() => navigation.openDrawer()}>
             <Image
               style={{width: 23, height: 23, marginLeft: 17}}
@@ -18,7 +33,7 @@ export default function CustomHeader({title, isHome, navigation}) {
         ) : (
           <TouchableOpacity
             style={{flexDirection: 'row', alignItems: 'center'}}
-            onPress={() => navigation.goBack()}>
+            onPress={() => handelBackNavigation()}>
             <Image
               style={{width: 30, height: 18.5, marginLeft: 12}}
               source={IMAGE.ICON_BACK}

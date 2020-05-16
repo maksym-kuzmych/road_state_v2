@@ -27,10 +27,7 @@ export default function MapStack() {
         name="CreateMark"
         component={CreateMarkContainer}
         // component={CurrentMarkScreen}
-        options={()=>({
-          headerShown: false,
-          tabBarVisible:false,
-        })}
+        options={navOptionHandler}
       />
     </StackMap.Navigator>
   );

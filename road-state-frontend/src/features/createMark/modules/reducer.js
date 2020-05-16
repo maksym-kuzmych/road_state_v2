@@ -1,48 +1,60 @@
 import update from 'react-addons-update';
 import constants from './actionConstants';
+import Geocoder from 'react-native-geocoding';
 
-const {GET_DIRECTION_INFO} = constants;
+const {GET_CREATE_MARK_LOCATION, GET_SELECTED_LOCATION} = constants;
 
 //Actions
 //--------------------
-export function getDirectionInfo(payload) {
+export function getCreateLocation(payload) {
   return {
-    type: GET_DIRECTION_INFO,
+    type: GET_CREATE_MARK_LOCATION,
     payload,
+  };
+}
+
+export function getSelectedLocation(coordinates) {
+  return (dispatch) => {
+    Geocoder.from(coordinates)
+      .then(json =>
+        dispatch({
+          type: GET_SELECTED_LOCATION,
+          payload: json.results[0],
+        }),
+      )
+      .catch(error => console.log(error.message));
   };
 }
 
 //Action Handlers
 //--------------------
-function handleGetDirectionInfo(state, action) {
+function handleGetCreateLocation(state, action) {
   return update(state, {
-    directionInformation: {
-      travelDistance: {
-        $set: action.payload.distance,
-      },
-      travelTime: {
-        $set: action.payload.time,
-      },
-      directionCoordinates: {
-        $set: action.payload.coords,
-      }
+    chooseLocation: {
+      $set: action.payload,
+    },
+  });
+}
+
+function handleGetSelectedLocation(state, action) {
+  return update(state, {
+    selectedLocation: {
+      $set: action.payload.formatted_address,
     },
   });
 }
 
 const ACTION_HANDLERS = {
-  GET_DIRECTION_INFO: handleGetDirectionInfo
+  GET_CREATE_MARK_LOCATION: handleGetCreateLocation,
+  GET_SELECTED_LOCATION: handleGetSelectedLocation,
 };
 
 const initialState = {
-  directionInformation: {
-    travelDistance: {},
-    travelTime: {},
-    directionCoordinates: []
-  }
+  chooseLocation: {},
+  selectedLocation: {},
 };
 
-export function MapReducer(state = initialState, action) {
+export function MarkCreateReducer(state = initialState, action) {
   const handler = ACTION_HANDLERS[action.type];
 
   return handler ? handler(state, action) : state;

@@ -9,8 +9,9 @@ export default class Spinner extends React.Component {
   }
 
   componentDidMount() {
+    const {spinAnim} = this.state;
     Animated.loop(
-      Animated.timing(this.state.spinAnim, {
+      Animated.timing(spinAnim, {
         toValue: 1,
         duration: 1000,
         easing: Easing.linear,
@@ -20,7 +21,8 @@ export default class Spinner extends React.Component {
   }
 
   render() {
-    const spin = this.state.spinAnim.interpolate({
+    const {spinAnim} = this.state;
+    const spin = spinAnim.interpolate({
       inputRange: [0, 1],
       outputRange: ['0deg', '360deg'],
     });

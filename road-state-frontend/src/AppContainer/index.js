@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Provider} from 'react-redux';
-import DrawerContainer from '../features/drawer/container/index'
+import DrawerContainer from '../features/drawer/container/index';
 
 export default class AppContainer extends Component {
   static propTypes = {
@@ -9,8 +9,10 @@ export default class AppContainer extends Component {
   };
 
   render() {
+    const {store} = this.props;
+
     return (
-      <Provider store={this.props.store}>
+      <Provider store={store}>
         <DrawerContainer />
       </Provider>
     );

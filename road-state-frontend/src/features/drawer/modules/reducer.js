@@ -12,7 +12,6 @@ const {
   GET_ADDRESS_PREDICTIONS,
   GET_SELECTED_ADDRESS,
   BUILD_ROUTE,
-  GET_DISTANCE_MATRIX,
 } = constants;
 
 //Actions
@@ -728,14 +727,6 @@ function handleBuildRoute(state, action) {
   });
 }
 
-function handleGetDitanceMatrix(state, action) {
-  return update(state, {
-    distanceMatrix: {
-      $set: action.payload,
-    },
-  });
-}
-
 const ACTION_HANDLERS = {
   GET_CURRENT_LOCATION: handleGetCurrentLocation,
   GET_INPUT: handleGetInputData,
@@ -745,7 +736,6 @@ const ACTION_HANDLERS = {
   GET_ADDRESS_PREDICTIONS: handleGetAddressPredictions,
   GET_SELECTED_ADDRESS: handleGetSelectedAddress,
   BUILD_ROUTE: handleBuildRoute,
-  GET_DISTANCE_MATRIX: handleGetDitanceMatrix,
 };
 
 const initialState = {

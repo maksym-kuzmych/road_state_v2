@@ -84,6 +84,7 @@ export default class Attachment extends React.Component {
 
   render() {
     let {fileList} = this.state;
+    
     return (
       <View style={styles.container}>
         <Text style={styles.headerText}>Photos: </Text>
@@ -114,11 +115,11 @@ const styles = StyleSheet.create({
   btnAddPhotos: {
     backgroundColor: '#0080ff',
     height: 50,
-    width: 150,
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 10,
     borderRadius: 5,
+    width: '100%',
   },
   btnText: {
     color: '#fff',

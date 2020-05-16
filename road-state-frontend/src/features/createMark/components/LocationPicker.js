@@ -10,18 +10,23 @@ export default class LocationPicker extends React.Component {
   }
 
   handleChooseLocation = () => {
-    const {buildRoute} = this.props;
+    const {buildRoute, getCreateLocation, navigation} = this.props;
     if (buildRoute === true) {
-      Alert.alert('Good', 'Route was built :)');
+      getCreateLocation(true);
+      navigation.navigate('Map');
     } else {
-      Alert.alert('Error', 'A route must be built to select a location.');
+      Alert.alert('Error', 'The route must be built to select a location.');
     }
   };
 
   render() {
+    const {selectedLocation} = this.props;
     return (
       <View style={styles.container}>
         <Text style={styles.headerText}>Location: </Text>
+        {selectedLocation.length && (
+          <Text style={styles.selectedLocation}>{selectedLocation}</Text>
+        )}
         <View style={styles.locationContainer}>
           <TouchableOpacity
             onPress={this.handleChooseLocation}
@@ -48,14 +53,19 @@ const styles = StyleSheet.create({
   btnLocation: {
     backgroundColor: '#0080ff',
     height: 50,
-    width: 150,
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 10,
     borderRadius: 5,
+    width: '100%',
   },
   btnText: {
     color: '#fff',
     fontSize: 15,
+  },
+  selectedLocation: {
+    marginLeft: 10,
+    fontSize: 15,
+    paddingTop: 5,
   },
 });
