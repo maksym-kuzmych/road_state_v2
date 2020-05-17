@@ -1,19 +1,20 @@
 import * as React from 'react';
 import {Text, View, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import {IMAGE} from '../../../common/constants/image';
+import {strings} from '../../resources/resources';
 
 export default function MarkCard({navigation}) {
   return (
     <View style={styles.markContainer}>
       <View style={styles.cardHeader}>
-        <Text style={styles.headerText}>Mark №1</Text>
+        <Text style={styles.headerText}>{strings.markCard.header} №1</Text>
       </View>
       <View style={styles.cardContent}>
         <View style={styles.itemContainer}>
           <Image source={IMAGE.ICON_DATE} style={styles.icon} />
           <Text>
             <Text style={[styles.text, {fontWeight: 'bold'}]}>
-              Creation Date:{' '}
+              {strings.markCard.creationDate}:{' '}
             </Text>
             <Text style={styles.text}>14.05.2020</Text>
           </Text>
@@ -21,7 +22,9 @@ export default function MarkCard({navigation}) {
         <View style={styles.itemContainer}>
           <Image source={IMAGE.ICON_MARKER} style={styles.icon} />
           <Text>
-            <Text style={[styles.text, {fontWeight: 'bold'}]}>Location: </Text>
+            <Text style={[styles.text, {fontWeight: 'bold'}]}>
+              {strings.markCard.location}:{' '}
+            </Text>
             <Text style={styles.text}>San Francisco</Text>
           </Text>
         </View>
@@ -31,7 +34,9 @@ export default function MarkCard({navigation}) {
             style={styles.icon}
           />
           <Text>
-            <Text style={[styles.text, {fontWeight: 'bold'}]}>Condition: </Text>
+            <Text style={[styles.text, {fontWeight: 'bold'}]}>
+              {strings.markCard.condition}:{' '}
+            </Text>
             <Text style={styles.text}>Bad</Text>
           </Text>
         </View>
@@ -40,11 +45,11 @@ export default function MarkCard({navigation}) {
         <TouchableOpacity
           style={[styles.button, {backgroundColor: 'lightgrey'}]}
           onPress={() => navigation.navigate('CurrentMark')}>
-          <Text style={styles.btnText}>Details</Text>
+          <Text style={styles.btnText}>{strings.markCard.btnDetails}</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.button, {backgroundColor: 'red', marginLeft: 5}]}>
-          <Text style={styles.btnText}>Delete</Text>
+          <Text style={styles.btnText}>{strings.markCard.btnDelete}</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -86,7 +91,7 @@ const styles = StyleSheet.create({
   },
   button: {
     height: 30,
-    width: 65,
+    width: 85,
     borderRadius: 12,
     alignItems: 'center',
     justifyContent: 'center',

@@ -1,17 +1,29 @@
 import React from 'react';
 import {Text, View, Image, StyleSheet} from 'react-native';
 import {IMAGE} from '../../../common/constants/image';
+import {strings} from '../../resources/resources';
 
 export default function Information() {
   return (
     <View style={styles.container}>
-      <Text style={styles.headerText}>General information: </Text>
+      <Text style={styles.headerText}>
+        {strings.currentMark.lblGeneralInformation}:{' '}
+      </Text>
       <View style={styles.infoContainer}>
+        <View style={styles.itemContainer}>
+          <Image source={IMAGE.ICON_PROFILE} style={styles.icon} />
+          <Text>
+            <Text style={[styles.text, {fontWeight: 'bold'}]}>
+              {strings.currentMark.lblAuthor}:{' '}
+            </Text>
+            <Text style={styles.text}>Ivan Ivanov</Text>
+          </Text>
+        </View>
         <View style={styles.itemContainer}>
           <Image source={IMAGE.ICON_DATE} style={styles.icon} />
           <Text>
             <Text style={[styles.text, {fontWeight: 'bold'}]}>
-              Creation Date:{' '}
+              {strings.currentMark.lblCreationDate}:{' '}
             </Text>
             <Text style={styles.text}>14.05.2020</Text>
           </Text>
@@ -19,7 +31,9 @@ export default function Information() {
         <View style={styles.itemContainer}>
           <Image source={IMAGE.ICON_MARKER} style={styles.icon} />
           <Text>
-            <Text style={[styles.text, {fontWeight: 'bold'}]}>Location: </Text>
+            <Text style={[styles.text, {fontWeight: 'bold'}]}>
+              {strings.currentMark.lblLocation}:{' '}
+            </Text>
             <Text style={styles.text}>San Francisco</Text>
           </Text>
         </View>
@@ -29,14 +43,18 @@ export default function Information() {
             style={styles.icon}
           />
           <Text>
-            <Text style={[styles.text, {fontWeight: 'bold'}]}>Condition: </Text>
+            <Text style={[styles.text, {fontWeight: 'bold'}]}>
+              {strings.currentMark.lblCondition}:{' '}
+            </Text>
             <Text style={styles.text}>Bad</Text>
           </Text>
         </View>
         <View style={styles.itemContainer}>
           <Image source={IMAGE.ICON_STAR} style={styles.icon} />
           <Text>
-            <Text style={[styles.text, {fontWeight: 'bold'}]}>Relevance: </Text>
+            <Text style={[styles.text, {fontWeight: 'bold'}]}>
+              {strings.currentMark.lblRelevance}:{' '}
+            </Text>
             <Text style={styles.text}>10</Text>
           </Text>
         </View>

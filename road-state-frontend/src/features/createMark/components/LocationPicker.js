@@ -1,5 +1,6 @@
 import React from 'react';
 import {Text, View, StyleSheet, TouchableOpacity, Alert} from 'react-native';
+import {strings} from '../../resources/resources'
 
 export default class LocationPicker extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ export default class LocationPicker extends React.Component {
       getCreateLocation(true);
       navigation.navigate('Map');
     } else {
-      Alert.alert('Error', 'The route must be built to select a location.');
+      Alert.alert(strings.newMark.errorHeader, strings.newMark.errorBody);
     }
   };
 
@@ -23,7 +24,7 @@ export default class LocationPicker extends React.Component {
     const {selectedLocation} = this.props;
     return (
       <View style={styles.container}>
-        <Text style={styles.headerText}>Location: </Text>
+        <Text style={styles.headerText}>{strings.newMark.lblLocation}: </Text>
         {selectedLocation.length && (
           <Text style={styles.selectedLocation}>{selectedLocation}</Text>
         )}
@@ -31,7 +32,7 @@ export default class LocationPicker extends React.Component {
           <TouchableOpacity
             onPress={this.handleChooseLocation}
             style={styles.btnLocation}>
-            <Text style={styles.btnText}>Choose Location</Text>
+            <Text style={styles.btnText}>{strings.newMark.btnChooseLocation}</Text>
           </TouchableOpacity>
         </View>
       </View>

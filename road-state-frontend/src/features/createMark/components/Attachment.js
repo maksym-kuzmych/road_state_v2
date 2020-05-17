@@ -10,6 +10,7 @@ import {
 import {ActionSheet} from 'native-base';
 import Slider from '../components/Slider';
 import ImagePicker from 'react-native-image-crop-picker';
+import {strings} from '../../resources/resources'
 
 const width = Dimensions.get('window').width;
 export default class Attachment extends React.Component {
@@ -57,15 +58,15 @@ export default class Attachment extends React.Component {
 
   onClickAddImage = () => {
     const BUTTONS = [
-      'Take Photo From Camera',
-      'Choose Photo From Library',
-      'Cancel',
+      strings.actionPanel.takeFromCamera,
+      strings.actionPanel.takeFromGalery,
+      strings.actionPanel.cancel,
     ];
     ActionSheet.show(
       {
         options: BUTTONS,
         cancelButtonIndex: 2,
-        title: 'Select a photo',
+        title: strings.actionPanel.title,
       },
       buttonIndex => {
         switch (buttonIndex) {
@@ -87,13 +88,13 @@ export default class Attachment extends React.Component {
     
     return (
       <View style={styles.container}>
-        <Text style={styles.headerText}>Photos: </Text>
+        <Text style={styles.headerText}>{strings.newMark.lblPhoto}: </Text>
         <View style={styles.attachmentsContainer}>
           {fileList.length ? <Slider images={fileList} /> : null}
           <TouchableOpacity
             onPress={this.onClickAddImage}
             style={styles.btnAddPhotos}>
-            <Text style={styles.btnText}>Add Photo</Text>
+            <Text style={styles.btnText}>{strings.newMark.btnAddPhoto}</Text>
           </TouchableOpacity>
         </View>
       </View>

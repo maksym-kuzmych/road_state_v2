@@ -6,6 +6,7 @@ import CustomHeader from '../../header/index';
 import CreateButton from '../../createMark/components/CreateButton';
 import Direction from '../components/Direction/Direction';
 import MarkLocationButtons from '../components/MarkLocationButtons/MarkLocationButtons';
+import {strings} from '../../resources/resources';
 
 export default class MapScreen extends React.Component {
   constructor(props) {
@@ -17,6 +18,7 @@ export default class MapScreen extends React.Component {
       error: null,
       destinationPoints: [],
       marker: null,
+      headerText: 'Карта',
     };
   }
 
@@ -57,10 +59,41 @@ export default class MapScreen extends React.Component {
   };
 
   handleMapOnPress = e => {
-    const {chooseLocation} = this.props;
+    const {chooseLocation, directionInformation} = this.props;
     if (chooseLocation === true) {
-      this.setState({marker: e.nativeEvent.coordinate});
+      this.createMarkerOnRoute(
+        e.nativeEvent.coordinate,
+        directionInformation.directionCoordinates,
+      );
     }
+  };
+
+  createMarkerOnRoute = (markerCoords, routeCoords) => {
+    let mapMarkerCoord = null;
+    for (let i = 0; i < routeCoords.length - 1; i++) {
+      if (this.isPointInRouteSegment(markerCoords, routeCoords[i])) {
+        let minLng = Math.min(
+          routeCoords[i].longitude,
+          routeCoords[i + 1].longitude,
+        );
+        let coord =
+          routeCoords[i].longitude === minLng
+            ? routeCoords[i]
+            : routeCoords[i + 1];
+        mapMarkerCoord = coord;
+        break;
+      }
+    }
+    this.setState({marker: mapMarkerCoord});
+  };
+
+  isPointInRouteSegment = (markerCoords, routePoint) => {
+    const errorFarSize = 0.009;
+    const errorCloseSize = 0.0004;
+    const distance = Math.abs(markerCoords.longitude - routePoint.longitude);
+    if (distance <= errorCloseSize) return true;
+    else if (distance <= errorFarSize) return true;
+    else return false;
   };
 
   render() {
@@ -73,12 +106,12 @@ export default class MapScreen extends React.Component {
       directionInformation,
       getSelectedLocation,
     } = this.props;
-    const {marker} = this.state;
+    const {marker, headerText} = this.state;
 
     return (
       <SafeAreaView style={{flex: 1}}>
         <CustomHeader
-          title="Map"
+          title={strings.map.header}
           isHome={true}
           navigation={navigation}
           chooseLocation={chooseLocation}

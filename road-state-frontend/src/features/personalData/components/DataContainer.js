@@ -6,36 +6,37 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
+import {strings} from '../../resources/resources';
 
 export default function DataContainer() {
   return (
     <View style={styles.dataContainer}>
       <View style={[styles.itemContainer, {marginTop: 15}]}>
-        <Text style={styles.label}>User Name:</Text>
+        <Text style={styles.label}>{strings.personalData.userName}</Text>
         <TextInput
           style={styles.text}
-          placeholder="Input your name"
+          placeholder={strings.personalData.userNamePlaceholder}
           maxLength={45}
         />
       </View>
       <View style={styles.itemContainer}>
-        <Text style={styles.label}>Email:</Text>
+        <Text style={styles.label}>{strings.personalData.email}</Text>
         <TextInput
           style={styles.text}
-          placeholder="Input your email"
+          placeholder={strings.personalData.emailPlaceholder}
           maxLength={45}
         />
       </View>
       <View style={styles.itemContainer}>
-        <Text style={styles.label}>Birth Date:</Text>
+        <Text style={styles.label}>{strings.personalData.birthDate}</Text>
         <TextInput
           style={styles.text}
-          placeholder="Input your birthdate"
+          placeholder={strings.personalData.birthDatePlaceholder}
           maxLength={45}
         />
       </View>
       <TouchableOpacity style={styles.buttonContainer}>
-        <Text style={styles.btnText}>Save Changes</Text>
+        <Text style={styles.btnText}>{strings.personalData.btnSave}</Text>
       </TouchableOpacity>
     </View>
   );
@@ -69,7 +70,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     opacity: 0.75,
-    marginTop: 90
+    marginTop: 90,
   },
   btnText: {fontSize: 20, color: '#fff'},
 });

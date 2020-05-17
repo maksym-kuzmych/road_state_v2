@@ -9,6 +9,7 @@ import {
   Alert,
 } from 'react-native';
 import {IMAGE} from '../../../../common/constants/image';
+import {strings} from '../../../resources/resources';
 
 export default function SearchBox({
   getInputData,
@@ -96,7 +97,7 @@ export default function SearchBox({
       resultTypes.intermediate_2.visible === true &&
       resultTypes.intermediate_3.visible === true
     ) {
-      Alert.alert('Warning', 'Maximum intermediate points number is 3!');
+      Alert.alert(strings.searchBox.warningHeader, strings.searchBox.warningBody);
     } else {
       addIntermediatePoint(number);
     }
@@ -109,7 +110,7 @@ export default function SearchBox({
   return (
     <View>
       <View style={{marginTop: 5, width: '100%'}}>
-        <Text style={styles.inputLabel}>Origin locataion:</Text>
+        <Text style={styles.inputLabel}>{strings.searchBox.lblOrigin}:</Text>
         <View style={styles.inputContainer}>
           <Image
             source={IMAGE.ICON_MARKER}
@@ -119,7 +120,7 @@ export default function SearchBox({
           <TextInput
             ref={pickUpTextInput}
             style={styles.textinput}
-            placeholder="From"
+            placeholder={strings.searchBox.originPlaceholder}
             placeholderTextColor="#000"
             onChangeText={handleInput.bind(this, 'pickUp')}
             onFocus={() => toggleSearchResultModal('pickUp')}
@@ -129,7 +130,7 @@ export default function SearchBox({
       </View>
       {resultTypes.intermediate_1.visible === true && (
         <View style={{width: '100%'}}>
-          <Text style={styles.inputLabel}>Intermediate locataion:</Text>
+          <Text style={styles.inputLabel}>{strings.searchBox.lblInterim}:</Text>
           <View style={styles.inputContainer}>
             <Image
               source={IMAGE.ICON_MARKER}
@@ -138,7 +139,7 @@ export default function SearchBox({
             />
             <TextInput
               style={styles.textinput}
-              placeholder="Through"
+              placeholder={strings.searchBox.interimPlaceholder}
               placeholderTextColor="#000"
               onChangeText={handleInput.bind(this, 'intermediate_1')}
               onFocus={() => toggleSearchResultModal('intermediate_1')}
@@ -158,7 +159,7 @@ export default function SearchBox({
       )}
       {resultTypes.intermediate_2.visible === true && (
         <View style={{width: '100%'}}>
-          <Text style={styles.inputLabel}>Interim locataion:</Text>
+          <Text style={styles.inputLabel}>{strings.searchBox.lblInterim}:</Text>
           <View style={styles.inputContainer}>
             <Image
               source={IMAGE.ICON_MARKER}
@@ -167,7 +168,7 @@ export default function SearchBox({
             />
             <TextInput
               style={styles.textinput}
-              placeholder="Through"
+              placeholder={strings.searchBox.interimPlaceholder}
               placeholderTextColor="#000"
               onChangeText={handleInput.bind(this, 'intermediate_2')}
               onFocus={() => toggleSearchResultModal('intermediate_2')}
@@ -187,7 +188,7 @@ export default function SearchBox({
       )}
       {resultTypes.intermediate_3.visible === true && (
         <View style={{width: '100%'}}>
-          <Text style={styles.inputLabel}>Interim locataion:</Text>
+          <Text style={styles.inputLabel}>{strings.searchBox.lblInterim}:</Text>
           <View style={styles.inputContainer}>
             <Image
               source={IMAGE.ICON_MARKER}
@@ -196,7 +197,7 @@ export default function SearchBox({
             />
             <TextInput
               style={styles.textinput}
-              placeholder="Through"
+              placeholder={strings.searchBox.interimPlaceholder}
               placeholderTextColor="#000"
               onChangeText={handleInput.bind(this, 'intermediate_3')}
               onFocus={() => toggleSearchResultModal('intermediate_3')}
@@ -215,7 +216,7 @@ export default function SearchBox({
         </View>
       )}
       <View style={{width: '100%'}}>
-        <Text style={styles.inputLabel}>Destination locataion:</Text>
+        <Text style={styles.inputLabel}>{strings.searchBox.lblDestination}:</Text>
         <View style={styles.inputContainer}>
           <Image
             source={IMAGE.ICON_MARKER}
@@ -224,7 +225,7 @@ export default function SearchBox({
           />
           <TextInput
             style={styles.textinput}
-            placeholder="To"
+            placeholder={strings.searchBox.destinationPlaceholder}
             placeholderTextColor="#000"
             onChangeText={handleInput.bind(this, 'dropOff')}
             onFocus={() => toggleSearchResultModal('dropOff')}
@@ -250,7 +251,7 @@ export default function SearchBox({
                 ? styles.buildRouteText
                 : styles.buildRouteTextDisabled
             }>
-            Buld Route
+            {strings.searchBox.btnBuildRoute}
           </Text>
         </TouchableOpacity>
         <View style={styles.plusContainer}>

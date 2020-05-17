@@ -1,20 +1,21 @@
 import React, {useState} from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import {Picker} from 'native-base';
+import {strings} from '../../resources/resources'
 
 export default function ConditionDropdown() {
   const [pickerValue, setPickerValue] = useState('Average');
   return (
     <View style={styles.container}>
-      <Text style={styles.headerText}>General condition: </Text>
+      <Text style={styles.headerText}>{strings.newMark.lblCondition}: </Text>
       <View style={styles.pickerContainer}>
         <Picker
           mode="dropdown"
           selectedValue={pickerValue}
           onValueChange={setPickerValue.bind(this)}>
-          <Picker.Item label="Average" value="Average" />
-          <Picker.Item label="Bad" value="Bad" />
-          <Picker.Item label="Awful" value="Awful" />
+          <Picker.Item label={strings.newMark.conditionAverage} value="Average" />
+          <Picker.Item label={strings.newMark.conditionBad} value="Bad" />
+          <Picker.Item label={strings.newMark.conditionAwful} value="Awful" />
         </Picker>
       </View>
     </View>

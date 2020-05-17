@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
+import {strings} from '../../../resources/resources';
 
 export default class MarkLocationButtons extends React.Component {
   handleChooseLocation = marker => {
@@ -28,21 +29,19 @@ export default class MarkLocationButtons extends React.Component {
                   {backgroundColor: '#0080ff'},
                 ]
           }>
-          <TouchableOpacity onPress={() => this.handleChooseLocation(marker)}>
-            <Text style={styles.btnText}>Select Location</Text>
+          <TouchableOpacity
+            disabled={marker === null}
+            onPress={() => this.handleChooseLocation(marker)}>
+            <Text style={styles.btnText}>
+              {strings.locationPickerMapButtons.btnSelect}
+            </Text>
           </TouchableOpacity>
         </View>
-        <View
-          style={
-            marker != null
-              ? [styles.buttonContainer, {backgroundColor: '#7D7D7D'}]
-              : [
-                  styles.buttonContainerTransparent,
-                  {backgroundColor: '#7D7D7D'},
-                ]
-          }>
-          <TouchableOpacity>
-            <Text style={styles.btnText}>Cancel</Text>
+        <View style={[styles.buttonContainer, {backgroundColor: '#7D7D7D'}]}>
+          <TouchableOpacity onPress={() => navigation.navigate('CreateMark')}>
+            <Text style={styles.btnText}>
+              {strings.locationPickerMapButtons.btnCancel}
+            </Text>
           </TouchableOpacity>
         </View>
       </View>

@@ -7,6 +7,12 @@ import TabNavigator from '../../tabNavigation/index';
 const Drawer = createDrawerNavigator();
 
 export default class DrawerNavigator extends React.Component {
+  constructor(props) {
+    super(props);
+    const {getLocale} = this.props;
+    getLocale('ru');
+  }
+
   render() {
     const {
       getInputData,

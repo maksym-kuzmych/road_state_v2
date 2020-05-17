@@ -10,6 +10,7 @@ import {
   getSelectedAddress,
   buildRoute
 } from '../modules/reducer';
+import {getLocale} from '../../profile/modules/reducer'
 
 const mapStateToProps = state => ({
   region: state.drawer.region,
@@ -42,7 +43,8 @@ const mapActionCreators = {
   removeIntermediatePoint,
   getAddressPredictions,
   getSelectedAddress,
-  buildRoute
+  buildRoute,
+  getLocale
 };
 
 export default connect(

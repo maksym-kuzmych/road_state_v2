@@ -1,22 +1,21 @@
 import React from 'react';
 import {Text, View, TouchableOpacity, StyleSheet} from 'react-native';
+import {strings} from '../../resources/resources';
 
 export default function Poll() {
   return (
     <View style={styles.generalContainer}>
-      <Text style={styles.headerText}>Poll: </Text>
+      <Text style={styles.headerText}>{strings.currentMark.lblPoll}: </Text>
       <View style={styles.pollContainer}>
-        <Text style={styles.label}>
-          Is this problem relevant at the moment?
-        </Text>
+        <Text style={styles.label}>{strings.currentMark.pollBody}</Text>
         <View style={{flexDirection: 'row'}}>
           <TouchableOpacity
             style={[styles.btnContainer, {backgroundColor: 'green'}]}>
-            <Text style={styles.btnText}>Yes</Text>
+            <Text style={styles.btnText}>{strings.currentMark.btnYes}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={[styles.btnContainer, {backgroundColor: 'red'}]}>
-            <Text style={styles.btnText}>No</Text>
+            <Text style={styles.btnText}>{strings.currentMark.btnNo}</Text>
           </TouchableOpacity>
         </View>
       </View>

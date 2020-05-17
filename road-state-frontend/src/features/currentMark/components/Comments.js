@@ -10,6 +10,7 @@ import {
 import {Body} from 'native-base';
 import {IMAGE as Photo} from '../../../common/constants/testPhotos';
 import {IMAGE} from '../../../common/constants/image';
+import {strings} from '../../resources/resources';
 
 export default class Comments extends React.Component {
   constructor(props) {
@@ -24,7 +25,8 @@ export default class Comments extends React.Component {
     return (
       <View style={styles.container}>
         <Text style={styles.headerText}>
-          Comments: <Text style={styles.commentsNumber}>20</Text>
+          {strings.currentMark.lblComments}:{' '}
+          <Text style={styles.commentsNumber}>20</Text>
         </Text>
         <View style={styles.inputContainer}>
           <View style={styles.photoContainer}>
@@ -32,7 +34,7 @@ export default class Comments extends React.Component {
           </View>
           <TextInput
             style={styles.text}
-            placeholder="Leave a comment"
+            placeholder={strings.currentMark.leaveCommentPlaceholder}
             onChangeText={text => this.setState({inputComment: text})}
             value={inputComment}
             maxLength={40}

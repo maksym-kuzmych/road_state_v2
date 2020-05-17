@@ -1,8 +1,8 @@
 import React from 'react';
 import {Text, StyleSheet, Image, ScrollView} from 'react-native';
 import {View, Body} from 'native-base';
-
 import {IMAGE} from '../../../../common/constants/image';
+import {strings} from '../../../resources/resources';
 
 export default function MarksList({directionInformation}) {
   return directionInformation.travelDistance.length ? (
@@ -13,7 +13,9 @@ export default function MarksList({directionInformation}) {
           alignItems: 'center',
           backgroundColor: 'lightblue',
         }}>
-        <Text style={{padding: 7, fontSize: 16}}>Issues locations</Text>
+        <Text style={{padding: 7, fontSize: 16}}>
+          {strings.routeInformation.lblIssuesLocations}
+        </Text>
       </View>
       <ScrollView>
         <View style={styles.listItemContaier}>

@@ -8,6 +8,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import {IMAGE} from '../../../common/constants/testPhotos';
+import {strings} from '../../resources/resources';
 
 const {width} = Dimensions.get('window');
 const height = width * 0.6;
@@ -27,7 +28,7 @@ export default function Slider() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.headerText}>Photos: </Text>
+      <Text style={styles.headerText}>{strings.currentMark.lblPhoto}: </Text>
       <ScrollView
         pagingEnabled
         showsHorizontalScrollIndicator={false}

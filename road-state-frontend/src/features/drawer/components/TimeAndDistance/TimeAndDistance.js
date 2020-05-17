@@ -1,8 +1,8 @@
 import React from 'react';
 import {Text, StyleSheet, Image} from 'react-native';
 import {View, Body} from 'native-base';
-
 import {IMAGE} from '../../../../common/constants/image';
+import {strings} from '../../../resources/resources';
 
 export default function TimeAndDistance({directionInformation}) {
   return directionInformation.travelDistance.length ? (
@@ -12,7 +12,7 @@ export default function TimeAndDistance({directionInformation}) {
           <Image source={IMAGE.ICON_DISTANCE} style={styles.icon} />
           <Text>
             <Text style={[styles.text, {fontWeight: 'bold'}]}>
-              Travel Distance:{' '}
+              {strings.routeInformation.lblDistance}:{' '}
             </Text>
             <Text style={styles.text}>
               {directionInformation.travelDistance}
@@ -23,16 +23,19 @@ export default function TimeAndDistance({directionInformation}) {
           <Image source={IMAGE.ICON_TIME} style={styles.icon} />
           <Text>
             <Text style={[styles.text, {fontWeight: 'bold'}]}>
-              Travel Time:{' '}
+              {strings.routeInformation.lblTime}:{' '}
             </Text>
             <Text style={styles.text}>{directionInformation.travelTime}</Text>
           </Text>
         </View>
         <View style={styles.itemContainer}>
-          <Image source={IMAGE.ICON_GENERAL_ROAD_CONDITION} style={styles.icon} />
+          <Image
+            source={IMAGE.ICON_GENERAL_ROAD_CONDITION}
+            style={styles.icon}
+          />
           <Text>
             <Text style={[styles.text, {fontWeight: 'bold'}]}>
-              General road condition:{' '}
+              {strings.routeInformation.lblGeneralCondition}:{' '}
             </Text>
             <Text style={styles.text}>Average</Text>
           </Text>

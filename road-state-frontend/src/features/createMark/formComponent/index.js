@@ -14,6 +14,7 @@ import ConditionDropdown from '../components/ConditionDropdown';
 import Attachment from '../components/Attachment';
 import LocationPicker from '../components/LocationPicker';
 import Spinner from '../../spinner/index';
+import {strings} from '../../resources/resources'
 
 export default class CreateMarkScreen extends React.Component {
   render() {
@@ -26,7 +27,7 @@ export default class CreateMarkScreen extends React.Component {
     
     return (
       <SafeAreaView style={{flex: 1}}>
-        <CustomHeader title="New Mark" navigation={navigation} />
+        <CustomHeader title={strings.newMark.header} navigation={navigation} />
         <ScrollView>
           {/* <Spinner /> */}
           <Root>
@@ -49,11 +50,11 @@ export default class CreateMarkScreen extends React.Component {
           }}>
           <TouchableOpacity
             style={[styles.buttonContainer, {backgroundColor: '#0080ff'}]}>
-            <Text style={styles.btnText}>Create Mark</Text>
+            <Text style={styles.btnText}>{strings.newMark.btnCreate}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={[styles.buttonContainer, {backgroundColor: '#7D7D7D'}]}>
-            <Text style={styles.btnText}>Cancel</Text>
+            <Text style={styles.btnText}>{strings.newMark.btnCancel}</Text>
           </TouchableOpacity>
         </View>
       </SafeAreaView>

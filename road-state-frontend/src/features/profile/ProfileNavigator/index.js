@@ -2,7 +2,8 @@ import * as React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import AuthorizationStack from '../../auth/authorization/AuthorizationNavigator/index';
 import RegistrationForm from '../../auth/registration/index';
-import ProfileScreen from '../ProfileScreen/ProfileScreen';
+// import ProfileScreen from '../ProfileScreen/ProfileScreen';
+import ProfileContainer from '../container/index'
 import MarksCatalogScreen from '../../marksCatalog/index';
 import PersonalDataScreen from '../../personalData/index';
 import HelpScreen from '../../help/index';
@@ -18,7 +19,8 @@ export default function ProfileStack() {
     <StackProfile.Navigator initialRouteName="Profile">
       <StackProfile.Screen
         name="Profile"
-        component={ProfileScreen}
+        // component={ProfileScreen}
+        component={ProfileContainer}
         options={navOptionHandler}
       />
       <StackProfile.Screen

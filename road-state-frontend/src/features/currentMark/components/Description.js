@@ -1,12 +1,13 @@
 import React from 'react';
 import {Text, View, TextInput, StyleSheet} from 'react-native';
+import {strings} from '../../resources/resources';
 import AndroidKeyboardAdjust from 'react-native-android-keyboard-adjust';
 AndroidKeyboardAdjust.setAdjustPan();
 
 export default function Description() {
   return (
     <View style={styles.container}>
-      <Text style={styles.headerText}>Description: </Text>
+      <Text style={styles.headerText}>{strings.currentMark.lblDescription}: </Text>
       <View style={styles.textContainer}>
         <TextInput
           style={styles.text}

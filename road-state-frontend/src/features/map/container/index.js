@@ -21,6 +21,7 @@ const mapStateToProps = state => ({
     directionCoordinates: [],
   },
   chooseLocation: state.markCreate.chooseLocation || {},
+  locale: state.profile.locale || 'ru',
 });
 
 const mapActionCreators = {

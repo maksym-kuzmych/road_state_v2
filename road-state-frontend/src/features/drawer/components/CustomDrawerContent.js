@@ -11,6 +11,7 @@ import SearchBox from '../components/SearchBox/SearchBox';
 import SearchResults from '../components/SearchResults/SearchResults';
 import TimeAndDistance from '../components/TimeAndDistance/TimeAndDistance';
 import MarksList from '../components/MarksList/MarksList';
+import {strings} from '../../resources/resources';
 
 export default class CustomDrawerContent extends React.Component {
   render() {
@@ -62,7 +63,7 @@ export default class CustomDrawerContent extends React.Component {
           <TouchableOpacity
             style={{paddingVertical: 10, marginLeft: 15}}
             onPress={() => navigation.navigate('Map')}>
-            <Text>Back to Map</Text>
+            <Text>{strings.drawer.backToMap}</Text>
           </TouchableOpacity>
         </View>
       </SafeAreaView>
