@@ -141,7 +141,7 @@ export default class MapScreen extends React.Component {
               navigation={navigation}
             />
           )}
-          {marker && <Marker coordinate={marker} />}
+          {marker && <Marker coordinate={marker} pinColor="linen" />}
         </MapView>
         {chooseLocation !== true && <CreateButton navigation={navigation} />}
         <MarkLocationButtons

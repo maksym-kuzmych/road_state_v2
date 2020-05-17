@@ -8,6 +8,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import {IMAGE} from '../../../common/constants/image';
+import {strings} from '../../resources/resources';
 
 let dynamicContainerStyle = style => {
   return {
@@ -29,7 +30,7 @@ export default function PasswordToggleInput({textStyle, placeholderColor}) {
       <TextInput
         style={[styles.textinput, textStyle]}
         secureTextEntry={secureTextEntry}
-        placeholder="Password"
+        placeholder={strings.registration.passwordPlaceholder}
         placeholderTextColor={placeholderColor}
       />
       <TouchableOpacity

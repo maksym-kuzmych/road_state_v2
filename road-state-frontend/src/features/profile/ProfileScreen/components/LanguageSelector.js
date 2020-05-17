@@ -5,14 +5,13 @@ import {strings} from '../../../resources/resources';
 
 export default class LanguageSelector extends React.Component {
   handleLanguageUpdate = languageId => {
-    const {getLocale} = this.props;
+    const {getLocale, navigation} = this.props;
     if (languageId === 1) {
       getLocale('en');
-      this.setState({});
     } else {
       getLocale('ru');
-      this.setState({});
     }
+    navigation.navigate('Profile');
   };
 
   render() {
@@ -22,7 +21,9 @@ export default class LanguageSelector extends React.Component {
       <Modal transparent={true} visible={true}>
         <View style={styles.container}>
           <View style={styles.mainView}>
-            <Text style={styles.header}>{strings.languageSelector.applicationLanguage}</Text>
+            <Text style={styles.header}>
+              {strings.languageSelector.applicationLanguage}
+            </Text>
             <RadioButtonGroup
               hideModal={hideModal}
               locale={locale}
@@ -33,7 +34,9 @@ export default class LanguageSelector extends React.Component {
             <TouchableOpacity
               style={styles.button}
               onPress={() => hideModal(false)}>
-              <Text style={styles.btnText}>{strings.languageSelector.btnCancel}</Text>
+              <Text style={styles.btnText}>
+                {strings.languageSelector.btnCancel}
+              </Text>
             </TouchableOpacity>
           </View>
         </View>

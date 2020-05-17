@@ -39,10 +39,16 @@ export default function TabNavigator() {
           padding: 0,
         },
       }}>
-      <Tab.Screen name="Map" component={MapStack} />
-      <Tab.Screen name="Profile" component={ProfileStack} />
-      {/* <Tab.Screen name={strings.bottomTabNavigation.map} component={MapStack} />
-      <Tab.Screen name={strings.bottomTabNavigation.profile} component={ProfileStack} /> */}
+      <Tab.Screen
+        name="Map"
+        component={MapStack}
+        options={{title: strings.bottomTabNavigation.map}}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={ProfileStack}
+        options={{title: strings.bottomTabNavigation.profile}}
+      />
     </Tab.Navigator>
   );
 }

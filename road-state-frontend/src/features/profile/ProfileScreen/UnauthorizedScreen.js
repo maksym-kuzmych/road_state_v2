@@ -10,26 +10,25 @@ import {
 } from 'react-native';
 import CustomHeader from '../../header/index';
 import LanguageSelector from '../ProfileScreen/components/LanguageSelector';
+import {strings} from '../../resources/resources';
 import {IMAGE} from '../../../common/constants/image';
 
-export default function UnauthorizedScreen({navigation}) {
+export default function UnauthorizedScreen({navigation, locale, getLocale}) {
   let [showLanguageSelector, setShowLanguageSelector] = useState(false);
 
   return (
     <SafeAreaView style={{flex: 1}}>
-      <CustomHeader title="Profile" navigation={navigation} />
+      <CustomHeader
+        title={strings.unauthorizedScreen.header}
+        navigation={navigation}
+      />
       <View style={styles.topView}>
-        <Image
-          source={IMAGE.ICON_PROFILE_MAIN}
-          style={{
-            height: 60,
-            width: 60,
-          }}
-        />
-        <Text style={styles.mainText}>Login to profile</Text>
+        <Image source={IMAGE.ICON_PROFILE_MAIN} style={styles.mainIcon} />
+        <Text style={styles.mainText}>
+          {strings.unauthorizedScreen.heading}
+        </Text>
         <Text style={styles.description}>
-          Login or register to browse the catalog of your marks and leave
-          comments on existing marks
+          {strings.unauthorizedScreen.description}
         </Text>
         <View style={styles.buttonsContainer}>
           <TouchableOpacity
@@ -44,7 +43,7 @@ export default function UnauthorizedScreen({navigation}) {
             ]}
             onPress={() => navigation.navigate('Registration')}>
             <Text style={[styles.buttonText, {color: '#267175'}]}>
-              Registration
+              {strings.unauthorizedScreen.registration}
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -53,7 +52,9 @@ export default function UnauthorizedScreen({navigation}) {
               {marginLeft: 10, borderRadius: 2.5, backgroundColor: '#267175'},
             ]}
             onPress={() => navigation.navigate('Authorization')}>
-            <Text style={[styles.buttonText, {color: '#fff'}]}>Login</Text>
+            <Text style={[styles.buttonText, {color: '#fff'}]}>
+              {strings.unauthorizedScreen.login}
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -68,7 +69,9 @@ export default function UnauthorizedScreen({navigation}) {
           ]}
           onPress={() => setShowLanguageSelector(true)}>
           <Image source={IMAGE.ICON_LANGUAGE} style={styles.bottomIcon} />
-          <Text style={styles.bottomText}>Application language</Text>
+          <Text style={styles.bottomText}>
+            {strings.unauthorizedScreen.applicationLanguage}
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[
@@ -79,11 +82,18 @@ export default function UnauthorizedScreen({navigation}) {
           ]}
           onPress={() => navigation.navigate('Help')}>
           <Image source={IMAGE.ICON_HELP} style={styles.bottomIcon} />
-          <Text style={styles.bottomText}>Help</Text>
+          <Text style={styles.bottomText}>
+            {strings.unauthorizedScreen.help}
+          </Text>
         </TouchableOpacity>
       </View>
       {showLanguageSelector ? (
-        <LanguageSelector hideModal={setShowLanguageSelector} />
+        <LanguageSelector
+          hideModal={setShowLanguageSelector}
+          getLocale={getLocale}
+          locale={locale}
+          navigation={navigation}
+        />
       ) : null}
     </SafeAreaView>
   );
@@ -95,6 +105,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#cae8d5',
+  },
+  mainIcon: {
+    height: 60,
+    width: 60,
   },
   mainText: {
     marginTop: 20,

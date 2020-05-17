@@ -19,7 +19,6 @@ export default function ProfileStack() {
     <StackProfile.Navigator initialRouteName="Profile">
       <StackProfile.Screen
         name="Profile"
-        // component={ProfileScreen}
         component={ProfileContainer}
         options={navOptionHandler}
       />

@@ -60,6 +60,7 @@ export default function AuthorizedScreen({navigation, locale, getLocale}) {
           hideModal={setShowLanguageSelector}
           getLocale={getLocale}
           locale={locale}
+          navigation={navigation}
         />
       ) : null}
     </SafeAreaView>

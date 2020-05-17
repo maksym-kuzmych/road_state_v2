@@ -2,7 +2,7 @@ import * as React from 'react';
 import AuthorizedScreen from '../ProfileScreen/AuthorizedScreen';
 import UnauthorizedScreen from '../ProfileScreen/UnauthorizedScreen';
 
-const authorized = true;
+const authorized = false;
 
 export default class ProfileScreen extends React.Component {
   render() {

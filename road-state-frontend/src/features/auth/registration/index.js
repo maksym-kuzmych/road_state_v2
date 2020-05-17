@@ -10,6 +10,7 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import CustomHeader from '../../header/index';
 import PasswordToggleInput from '../components/PasswordToggleInput';
+import {strings} from '../../resources/resources';
 
 const _postData = (errorParam, setError) => {
   errorParam ? setError(false) : setError(true);
@@ -45,12 +46,12 @@ export default function RegistrationForm({navigation}) {
   let placeholderTextColor = error ? '#d63447' : '#fff';
   return (
     <SafeAreaView style={{flex: 1}}>
-      <CustomHeader title="Register" navigation={navigation} />
+      <CustomHeader title={strings.registration.header} navigation={navigation} />
       <LinearGradient colors={['#59b2af', '#267175']} style={styles.gradient}>
         <View style={styles.regform}>
           <TextInput
             style={error ? styles.validationField : styles.textinput}
-            placeholder="What is your name?"
+            placeholder={strings.registration.userNamePlaceholder}
             placeholderTextColor={placeholderTextColor}
             underlineColorAndroid={'transparent'}
           />
@@ -59,7 +60,7 @@ export default function RegistrationForm({navigation}) {
           ) : null}
           <TextInput
             style={error ? styles.validationField : styles.textinput}
-            placeholder="Email"
+            placeholder={strings.registration.emailPlaceholder}
             placeholderTextColor={placeholderTextColor}
             underlineColorAndroid={'transparent'}
           />
@@ -76,7 +77,7 @@ export default function RegistrationForm({navigation}) {
           <TouchableOpacity
             style={styles.button}
             onPress={() => _postData(error, setError)}>
-            <Text style={styles.btntext}>Sign Up</Text>
+            <Text style={styles.btntext}>{strings.registration.btnRegister}</Text>
           </TouchableOpacity>
         </View>
       </LinearGradient>

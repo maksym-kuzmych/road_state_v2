@@ -10,6 +10,7 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import CustomHeader from '../../../header/index';
 import PasswordToggleInput from '../../components/PasswordToggleInput';
+import {strings} from '../../../resources/resources';
 
 export default function AuthorizationForm({navigation}) {
   const [error, setError] = useState(false);
@@ -17,12 +18,15 @@ export default function AuthorizationForm({navigation}) {
   let placeholderTextColor = error ? '#d63447' : '#fff';
   return (
     <SafeAreaView style={{flex: 1}}>
-      <CustomHeader title="Login" navigation={navigation} />
+      <CustomHeader
+        title={strings.authorization.header}
+        navigation={navigation}
+      />
       <LinearGradient colors={['#59b2af', '#267175']} style={styles.gradient}>
         <View style={styles.regform}>
           <TextInput
             style={error ? styles.validationField : styles.textinput}
-            placeholder="Email or phone number"
+            placeholder={strings.authorization.userNamePlaceholder}
             placeholderTextColor={placeholderTextColor}
             underlineColorAndroid={'transparent'}
           />
@@ -39,22 +43,26 @@ export default function AuthorizationForm({navigation}) {
           <TouchableOpacity
             style={styles.button}
             onPress={() => (error ? setError(false) : setError(true))}>
-            <Text style={styles.btntext}>Sign In</Text>
+            <Text style={styles.btntext}>{strings.authorization.btnLogin}</Text>
           </TouchableOpacity>
           <View style={styles.bottomView}>
             <TouchableOpacity
               style={{marginBottom: 10}}
               onPress={() => navigation.navigate('ChangePassword')}>
-              <Text style={styles.bottomText}>Forgot password?</Text>
+              <Text style={styles.bottomText}>
+                {strings.authorization.textForgotPassword}
+              </Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={{marginBottom: 10}}
               onPress={() => navigation.navigate('Registration')}>
               <Text style={styles.bottomText}>
                 <Text style={{color: '#dee3e2'}}>
-                  Don't have an account yet?
+                  {strings.authorization.textDontHaveAnAccount}
                 </Text>{' '}
-                <Text style={{fontWeight: 'bold'}}>Create</Text>
+                <Text style={{fontWeight: 'bold'}}>
+                  {strings.authorization.textCreateAccount}
+                </Text>
               </Text>
             </TouchableOpacity>
           </View>
