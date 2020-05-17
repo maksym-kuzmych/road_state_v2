@@ -13,7 +13,18 @@ import PasswordToggleInput from '../components/PasswordToggleInput';
 import {strings} from '../../resources/resources';
 
 const _postData = (errorParam, setError) => {
-  errorParam ? setError(false) : setError(true);
+  fetch('http://192.168.1.4/api/values')
+  .then((response) => {
+    console.log(response);
+    response.json()
+  })
+  .then((json) => {
+    console.log(json);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+  // errorParam ? setError(false) : setError(true);
   // fetch('http://192.168.1.4:90/api/ApplicationUser/Register', {
   //   method: 'POST',
   //   header: {
