@@ -11,6 +11,7 @@ export default class DrawerNavigator extends React.Component {
     super(props);
     const {getLocale} = this.props;
     getLocale('ru');
+    //console.disableYellowBox = true;
   }
 
   render() {
