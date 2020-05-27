@@ -12,12 +12,20 @@ import LanguageSelector from '../ProfileScreen/components/LanguageSelector';
 import {IMAGE} from '../../../common/constants/image';
 import {strings} from '../../resources/resources';
 
-export default function AuthorizedScreen({navigation, locale, getLocale}) {
+export default function AuthorizedScreen({
+  navigation,
+  locale,
+  getLocale,
+  loginUser,
+}) {
   let [showLanguageSelector, setShowLanguageSelector] = useState(false);
 
   return (
     <SafeAreaView style={{flex: 1}}>
-      <CustomHeader title={strings.authorizedScreen.header} navigation={navigation} />
+      <CustomHeader
+        title={strings.authorizedScreen.header}
+        navigation={navigation}
+      />
       <View style={styles.mainView}>
         <View style={styles.innerView}>
           <TouchableOpacity
@@ -29,29 +37,41 @@ export default function AuthorizedScreen({navigation, locale, getLocale}) {
             ]}
             onPress={() => navigation.navigate('PersonalData')}>
             <Image source={IMAGE.ICON_PROFILE} style={styles.bottomIcon} />
-            <Text style={styles.bottomText}>{strings.authorizedScreen.personalData}</Text>
+            <Text style={styles.bottomText}>
+              {strings.authorizedScreen.personalData}
+            </Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.button}
             onPress={() => navigation.navigate('MarksCatalog')}>
             <Image source={IMAGE.ICON_CATALOG} style={styles.bottomIcon} />
-            <Text style={styles.bottomText}>{strings.authorizedScreen.marksCatalog}</Text>
+            <Text style={styles.bottomText}>
+              {strings.authorizedScreen.marksCatalog}
+            </Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.button}
             onPress={() => setShowLanguageSelector(true)}>
             <Image source={IMAGE.ICON_LANGUAGE} style={styles.bottomIcon} />
-            <Text style={styles.bottomText}>{strings.authorizedScreen.applicationLanguage}</Text>
+            <Text style={styles.bottomText}>
+              {strings.authorizedScreen.applicationLanguage}
+            </Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.button}
             onPress={() => navigation.navigate('Help')}>
             <Image source={IMAGE.ICON_HELP} style={styles.bottomIcon} />
-            <Text style={styles.bottomText}>{strings.authorizedScreen.help}</Text>
+            <Text style={styles.bottomText}>
+              {strings.authorizedScreen.help}
+            </Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => loginUser(false)}>
             <Image source={IMAGE.ICON_LOGOUT} style={styles.bottomIcon} />
-            <Text style={styles.bottomText}>{strings.authorizedScreen.logout}</Text>
+            <Text style={styles.bottomText}>
+              {strings.authorizedScreen.logout}
+            </Text>
           </TouchableOpacity>
         </View>
       </View>

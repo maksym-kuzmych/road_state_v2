@@ -1,0 +1,4 @@
+export default {
+  REGISTRATE_USER: 'REGISTRATE_USER',
+  HIDE_SPINNER: 'HIDE_SPINNER',
+};

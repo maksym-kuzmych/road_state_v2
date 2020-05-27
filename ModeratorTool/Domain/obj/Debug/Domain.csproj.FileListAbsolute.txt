@@ -1,0 +1,6 @@
+F:\react-native-projs\maps-test\ModeratorTool\Domain\bin\Debug\Domain.dll
+F:\react-native-projs\maps-test\ModeratorTool\Domain\bin\Debug\Domain.pdb
+F:\react-native-projs\maps-test\ModeratorTool\Domain\obj\Debug\Domain.csprojAssemblyReference.cache
+F:\react-native-projs\maps-test\ModeratorTool\Domain\obj\Debug\Domain.csproj.CoreCompileInputs.cache
+F:\react-native-projs\maps-test\ModeratorTool\Domain\obj\Debug\Domain.dll
+F:\react-native-projs\maps-test\ModeratorTool\Domain\obj\Debug\Domain.pdb

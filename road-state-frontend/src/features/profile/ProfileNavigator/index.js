@@ -1,9 +1,10 @@
 import * as React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import AuthorizationStack from '../../auth/authorization/AuthorizationNavigator/index';
-import RegistrationForm from '../../auth/registration/index';
+// import RegistrationForm from '../../auth/registration/formComponent/index';
+import RegistrationContainer from '../../auth/registration/container/index';
 // import ProfileScreen from '../ProfileScreen/ProfileScreen';
-import ProfileContainer from '../container/index'
+import ProfileContainer from '../container/index';
 import MarksCatalogScreen from '../../marksCatalog/index';
 import PersonalDataScreen from '../../personalData/index';
 import HelpScreen from '../../help/index';
@@ -29,7 +30,7 @@ export default function ProfileStack() {
       />
       <StackProfile.Screen
         name="Registration"
-        component={RegistrationForm}
+        component={RegistrationContainer}
         options={navOptionHandler}
       />
       <StackProfile.Screen

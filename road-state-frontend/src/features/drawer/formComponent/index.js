@@ -3,6 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import CustomDrawerContent from '../components/CustomDrawerContent';
 import TabNavigator from '../../tabNavigation/index';
+import SpinnerContainer from '../../spinner/container/index';
 
 const Drawer = createDrawerNavigator();
 
@@ -11,7 +12,7 @@ export default class DrawerNavigator extends React.Component {
     super(props);
     const {getLocale} = this.props;
     getLocale('ru');
-    //console.disableYellowBox = true;
+    console.disableYellowBox = true;
   }
 
   render() {
@@ -32,6 +33,7 @@ export default class DrawerNavigator extends React.Component {
 
     return (
       <NavigationContainer>
+        <SpinnerContainer />
         <Drawer.Navigator
           initialRouteName="Map"
           drawerContent={props => (

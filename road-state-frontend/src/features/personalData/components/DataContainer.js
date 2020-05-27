@@ -17,6 +17,7 @@ export default function DataContainer() {
           style={styles.text}
           placeholder={strings.personalData.userNamePlaceholder}
           maxLength={45}
+          value="Maksym"
         />
       </View>
       <View style={styles.itemContainer}>
@@ -25,9 +26,10 @@ export default function DataContainer() {
           style={styles.text}
           placeholder={strings.personalData.emailPlaceholder}
           maxLength={45}
+          value="maxim.kuzmich.98@gmail.com"
         />
       </View>
-      <View style={styles.itemContainer}>
+      {/* <View style={styles.itemContainer}>
         <Text style={styles.label}>{strings.personalData.birthDate}</Text>
         <TextInput
           style={styles.text}
@@ -37,7 +39,7 @@ export default function DataContainer() {
       </View>
       <TouchableOpacity style={styles.buttonContainer}>
         <Text style={styles.btnText}>{strings.personalData.btnSave}</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   );
 }

@@ -10,6 +10,7 @@ import {ActionSheet} from 'native-base';
 import ImagePicker from 'react-native-image-crop-picker';
 import {IMAGE as Icon} from '../../../common/constants/image';
 import {IMAGE} from '../../../common/constants/testPhotos';
+import {strings} from '../../resources/resources';
 
 const width = Dimensions.get('window').width;
 export default class PersonalDataContainer extends React.Component {
@@ -53,15 +54,15 @@ export default class PersonalDataContainer extends React.Component {
 
   onClickAddImage = () => {
     const BUTTONS = [
-      'Take Photo From Camera',
-      'Choose Photo From Library',
-      'Cancel',
+      strings.actionPanel.takeFromCamera,
+      strings.actionPanel.takeFromGalery,
+      strings.actionPanel.cancel,
     ];
     ActionSheet.show(
       {
         options: BUTTONS,
         cancelButtonIndex: 2,
-        title: 'Select a photo',
+        title: strings.actionPanel.title,
       },
       buttonIndex => {
         switch (buttonIndex) {

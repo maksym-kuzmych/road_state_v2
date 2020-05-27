@@ -1,12 +1,16 @@
 import React from 'react';
 import {StyleSheet, View, Modal, Animated, Easing} from 'react-native';
-import {IMAGE} from '../../common/constants/image';
+import {IMAGE} from '../../../common/constants/image';
 
 export default class Spinner extends React.Component {
   constructor(props) {
     super(props);
     this.state = {spinAnim: new Animated.Value(0)};
   }
+
+  handleHideSpinner = () => {
+    const {hideSpinner} = this.props;
+  };
 
   componentDidMount() {
     const {spinAnim} = this.state;
@@ -20,6 +24,11 @@ export default class Spinner extends React.Component {
     ).start();
   }
 
+  componentDidUpdate() {
+    const {isLoading, hideSpinner} = this.props;
+    if (isLoading === true) setTimeout(() => hideSpinner(false), 2000);
+  }
+
   render() {
     const {spinAnim} = this.state;
     const spin = spinAnim.interpolate({
@@ -27,7 +36,8 @@ export default class Spinner extends React.Component {
       outputRange: ['0deg', '360deg'],
     });
 
-    return (
+    const {isLoading} = this.props;
+    return isLoading === true ? (
       <Modal transparent={true} visible={true}>
         <View style={styles.container}>
           <View style={styles.mainView}>
@@ -38,7 +48,7 @@ export default class Spinner extends React.Component {
           </View>
         </View>
       </Modal>
-    );
+    ) : null;
   }
 }
 

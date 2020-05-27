@@ -12,65 +12,150 @@ import CustomHeader from '../../../header/index';
 import PasswordToggleInput from '../../components/PasswordToggleInput';
 import {strings} from '../../../resources/resources';
 
-export default function AuthorizationForm({navigation}) {
-  const [error, setError] = useState(false);
+export default class AuthorizationForm extends React.Component {
+  //const [error, setError] = useState(false);
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: false,
+    };
+  }
 
-  let placeholderTextColor = error ? '#d63447' : '#fff';
-  return (
-    <SafeAreaView style={{flex: 1}}>
-      <CustomHeader
-        title={strings.authorization.header}
-        navigation={navigation}
-      />
-      <LinearGradient colors={['#59b2af', '#267175']} style={styles.gradient}>
-        <View style={styles.regform}>
-          <TextInput
-            style={error ? styles.validationField : styles.textinput}
-            placeholder={strings.authorization.userNamePlaceholder}
-            placeholderTextColor={placeholderTextColor}
-            underlineColorAndroid={'transparent'}
-          />
-          {error ? (
-            <Text style={styles.validationError}>Field required</Text>
-          ) : null}
-          <PasswordToggleInput
-            textStyle={error ? styles.validationField : styles.textinput}
-            placeholderColor={placeholderTextColor}
-          />
-          {error ? (
-            <Text style={styles.validationError}>Field required</Text>
-          ) : null}
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => (error ? setError(false) : setError(true))}>
-            <Text style={styles.btntext}>{strings.authorization.btnLogin}</Text>
-          </TouchableOpacity>
-          <View style={styles.bottomView}>
+  handleLogin = () => {
+    const {hideSpinner} = this.props;
+    hideSpinner(true);
+    setTimeout(() => this.changeProfileScreen(), 2000);
+  };
+
+  changeProfileScreen = () => {
+    const {loginUser, navigation} = this.props;
+    loginUser(true);
+    navigation.navigate('Profile');
+  };
+
+  render() {
+    const {error} = this.state;
+    const {navigation} = this.props;
+    let placeholderTextColor = error ? '#d63447' : '#fff';
+    return (
+      <SafeAreaView style={{flex: 1}}>
+        <CustomHeader
+          title={strings.authorization.header}
+          navigation={navigation}
+        />
+        <LinearGradient colors={['#59b2af', '#267175']} style={styles.gradient}>
+          <View style={styles.regform}>
+            <TextInput
+              style={error ? styles.validationField : styles.textinput}
+              placeholder={strings.authorization.userNamePlaceholder}
+              placeholderTextColor={placeholderTextColor}
+              underlineColorAndroid={'transparent'}
+            />
+            {error ? (
+              <Text style={styles.validationError}>Field required</Text>
+            ) : null}
+            <PasswordToggleInput
+              textStyle={error ? styles.validationField : styles.textinput}
+              placeholderColor={placeholderTextColor}
+            />
+            {error ? (
+              <Text style={styles.validationError}>Field required</Text>
+            ) : null}
             <TouchableOpacity
-              style={{marginBottom: 10}}
-              onPress={() => navigation.navigate('ChangePassword')}>
-              <Text style={styles.bottomText}>
-                {strings.authorization.textForgotPassword}
+              style={styles.button}
+              // onPress={() => (error ? setError(false) : setError(true))}>
+              onPress={() => this.handleLogin()}>
+              <Text style={styles.btntext}>
+                {strings.authorization.btnLogin}
               </Text>
             </TouchableOpacity>
-            <TouchableOpacity
-              style={{marginBottom: 10}}
-              onPress={() => navigation.navigate('Registration')}>
-              <Text style={styles.bottomText}>
-                <Text style={{color: '#dee3e2'}}>
-                  {strings.authorization.textDontHaveAnAccount}
-                </Text>{' '}
-                <Text style={{fontWeight: 'bold'}}>
-                  {strings.authorization.textCreateAccount}
+            <View style={styles.bottomView}>
+              <TouchableOpacity
+                style={{marginBottom: 10}}
+                onPress={() => navigation.navigate('ChangePassword')}>
+                <Text style={styles.bottomText}>
+                  {strings.authorization.textForgotPassword}
                 </Text>
-              </Text>
-            </TouchableOpacity>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={{marginBottom: 10}}
+                onPress={() => navigation.navigate('Registration')}>
+                <Text style={styles.bottomText}>
+                  <Text style={{color: '#dee3e2'}}>
+                    {strings.authorization.textDontHaveAnAccount}
+                  </Text>{' '}
+                  <Text style={{fontWeight: 'bold'}}>
+                    {strings.authorization.textCreateAccount}
+                  </Text>
+                </Text>
+              </TouchableOpacity>
+            </View>
           </View>
-        </View>
-      </LinearGradient>
-    </SafeAreaView>
-  );
+        </LinearGradient>
+      </SafeAreaView>
+    );
+  }
 }
+
+// export default function AuthorizationForm({navigation}) {
+//   const [error, setError] = useState(false);
+
+//   let placeholderTextColor = error ? '#d63447' : '#fff';
+//   return (
+//     <SafeAreaView style={{flex: 1}}>
+//       <CustomHeader
+//         title={strings.authorization.header}
+//         navigation={navigation}
+//       />
+//       <LinearGradient colors={['#59b2af', '#267175']} style={styles.gradient}>
+//         <View style={styles.regform}>
+//           <TextInput
+//             style={error ? styles.validationField : styles.textinput}
+//             placeholder={strings.authorization.userNamePlaceholder}
+//             placeholderTextColor={placeholderTextColor}
+//             underlineColorAndroid={'transparent'}
+//           />
+//           {error ? (
+//             <Text style={styles.validationError}>Field required</Text>
+//           ) : null}
+//           <PasswordToggleInput
+//             textStyle={error ? styles.validationField : styles.textinput}
+//             placeholderColor={placeholderTextColor}
+//           />
+//           {error ? (
+//             <Text style={styles.validationError}>Field required</Text>
+//           ) : null}
+//           <TouchableOpacity
+//             style={styles.button}
+//             onPress={() => (error ? setError(false) : setError(true))}>
+//             <Text style={styles.btntext}>{strings.authorization.btnLogin}</Text>
+//           </TouchableOpacity>
+//           <View style={styles.bottomView}>
+//             <TouchableOpacity
+//               style={{marginBottom: 10}}
+//               onPress={() => navigation.navigate('ChangePassword')}>
+//               <Text style={styles.bottomText}>
+//                 {strings.authorization.textForgotPassword}
+//               </Text>
+//             </TouchableOpacity>
+//             <TouchableOpacity
+//               style={{marginBottom: 10}}
+//               onPress={() => navigation.navigate('Registration')}>
+//               <Text style={styles.bottomText}>
+//                 <Text style={{color: '#dee3e2'}}>
+//                   {strings.authorization.textDontHaveAnAccount}
+//                 </Text>{' '}
+//                 <Text style={{fontWeight: 'bold'}}>
+//                   {strings.authorization.textCreateAccount}
+//                 </Text>
+//               </Text>
+//             </TouchableOpacity>
+//           </View>
+//         </View>
+//       </LinearGradient>
+//     </SafeAreaView>
+//   );
+// }
 
 const styles = StyleSheet.create({
   gradient: {

@@ -13,7 +13,7 @@ export default function MarksCatalogScreen({navigation}) {
       />
       <ScrollView>
         <View style={styles.container}>
-          <MarkCard navigation={navigation} />
+          {/* <MarkCard navigation={navigation} /> */}
         </View>
       </ScrollView>
     </SafeAreaView>

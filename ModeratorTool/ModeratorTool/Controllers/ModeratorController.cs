@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ModeratorTool.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,21 +15,36 @@ namespace ModeratorTool.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult AllMarks()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult IncomingMarks()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
 
+        [HttpGet]
+        public ActionResult ViewMarker(int id)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ViewMarker(Marker model)
+        {
+            return View();
+        }
+
+        [HttpGet]
         public ActionResult SendMail()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult SendMail(Email content)
         {
             string recipient = Request["to"];
             string subject = Request["subject"];

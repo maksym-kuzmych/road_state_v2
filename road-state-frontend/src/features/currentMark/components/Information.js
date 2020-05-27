@@ -34,7 +34,7 @@ export default function Information() {
             <Text style={[styles.text, {fontWeight: 'bold'}]}>
               {strings.currentMark.lblLocation}:{' '}
             </Text>
-            <Text style={styles.text}>San Francisco</Text>
+            <Text style={styles.text}>Radnom Location, East 23 st.</Text>
           </Text>
         </View>
         <View style={styles.itemContainer}>

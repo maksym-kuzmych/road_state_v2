@@ -1,7 +1,8 @@
 import * as React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import AuthorizationForm from '../AuthorizationForm/AuthorizationForm';
-import RegistrationForm from '../../registration/index';
+//import AuthorizationForm from '../AuthorizationForm/AuthorizationForm';
+import LoginContainer from '../container/index';
+import RegistrationForm from '../../registration/formComponent/index';
 import ChangePasswordScreen from '../../../changePassword/index';
 
 const navOptionHandler = () => ({
@@ -15,7 +16,8 @@ export default function AuthorizationStack() {
     <StackAuthorization.Navigator initialRouteName="Authorization">
       <StackAuthorization.Screen
         name="Authorization"
-        component={AuthorizationForm}
+        // component={AuthorizationForm}
+        component={LoginContainer}
         options={navOptionHandler}
       />
       <StackAuthorization.Screen

@@ -84,3 +84,5 @@ F:\react-native-projs\maps-test\ModeratorTool\ModeratorTool\obj\Debug\ModeratorT
 F:\react-native-projs\maps-test\ModeratorTool\ModeratorTool\obj\Debug\ModeratorTool.csproj.CopyComplete
 F:\react-native-projs\maps-test\ModeratorTool\ModeratorTool\obj\Debug\ModeratorTool.dll
 F:\react-native-projs\maps-test\ModeratorTool\ModeratorTool\obj\Debug\ModeratorTool.pdb
+F:\react-native-projs\maps-test\ModeratorTool\ModeratorTool\bin\Domain.dll
+F:\react-native-projs\maps-test\ModeratorTool\ModeratorTool\bin\Domain.pdb

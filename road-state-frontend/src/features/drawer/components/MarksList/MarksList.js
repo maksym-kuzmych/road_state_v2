@@ -27,11 +27,11 @@ export default function MarksList({directionInformation}) {
             />
           </View>
           <Body style={styles.textBodyContainer}>
-            <Text style={styles.primaryText}>primaryText</Text>
-            <Text style={styles.secondaryText}>secondaryText</Text>
+            <Text style={styles.primaryText}>Radnom</Text>
+            <Text style={styles.secondaryText}>Radnom Location, East 23 st.</Text>
           </Body>
         </View>
-        <View style={styles.listItemContaier}>
+        {/* <View style={styles.listItemContaier}>
           <View style={styles.leftContainer}>
             <Image
               source={IMAGE.ICON_MARKER}
@@ -121,7 +121,7 @@ export default function MarksList({directionInformation}) {
             <Text style={styles.primaryText}>primaryText</Text>
             <Text style={styles.secondaryText}>secondaryText</Text>
           </Body>
-        </View>
+        </View> */}
       </ScrollView>
     </View>
   ) : null;

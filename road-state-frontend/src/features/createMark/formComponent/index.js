@@ -13,7 +13,7 @@ import Description from '../components/Description';
 import ConditionDropdown from '../components/ConditionDropdown';
 import Attachment from '../components/Attachment';
 import LocationPicker from '../components/LocationPicker';
-import Spinner from '../../spinner/index';
+import Spinner from '../../spinner/formComponent/index';
 import {strings} from '../../resources/resources'
 
 export default class CreateMarkScreen extends React.Component {

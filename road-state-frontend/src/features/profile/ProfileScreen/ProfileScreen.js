@@ -2,17 +2,18 @@ import * as React from 'react';
 import AuthorizedScreen from '../ProfileScreen/AuthorizedScreen';
 import UnauthorizedScreen from '../ProfileScreen/UnauthorizedScreen';
 
-const authorized = false;
+//const authorized = false;
 
 export default class ProfileScreen extends React.Component {
   render() {
-    const {navigation, locale, getLocale} = this.props;
-    if (authorized == true) {
+    const {navigation, locale, getLocale, isLogedIn, loginUser} = this.props;
+    if (isLogedIn == true) {
       return (
         <AuthorizedScreen
           navigation={navigation}
           getLocale={getLocale}
           locale={locale}
+          loginUser={loginUser}
         />
       );
     } else
