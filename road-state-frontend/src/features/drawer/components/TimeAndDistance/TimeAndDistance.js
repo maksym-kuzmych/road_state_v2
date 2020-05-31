@@ -37,7 +37,7 @@ export default function TimeAndDistance({directionInformation}) {
             <Text style={[styles.text, {fontWeight: 'bold'}]}>
               {strings.routeInformation.lblGeneralCondition}:{' '}
             </Text>
-            <Text style={styles.text}>Average</Text>
+            <Text style={styles.text}>Удовлетворительное</Text>
           </Text>
         </View>
       </View>

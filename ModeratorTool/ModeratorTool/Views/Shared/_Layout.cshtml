@@ -1,40 +1,38 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>Moderator Tool</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Имя приложения", "Index", "Moderator", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Домашняя страница", "Index", "Moderator")</li>
-                    <li>@Html.ActionLink("Информация", "About", "Moderator")</li>
-                    <li>@Html.ActionLink("Связаться", "Contact", "Moderator")</li>
-                </ul>
-            </div>
+    <header>
+        <div class="logo-container">
+            <img width="120px;" height="120px;" src="~/Content/ic_launcher.png" />
+            <span class="logo">Moderator Tool</span>
         </div>
-    </div>
+    </header>
+    <nav class="menu-bar">
+        <ul>
+            <li style="margin-left:50px;"><a href="/Moderator/IncomingMarks">Incoming marks</a></li>
+            <li><a href="/Moderator/AllMarks">All marks</a></li>
+            <li><a href="/Moderator/NewEmail">Write an email</a></li>
+            <li style="position:absolute; right: 20px"><a href="/Moderator/Index">Home</a></li>
+        </ul>
+    </nav>
+
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - мое приложение ASP.NET</p>
-        </footer>
     </div>
+
+    <footer>
+        <div class="credits">
+            <div style="padding-top: 20px;">Developed By <u>Maksym Kuzmych</u> - Road Conditions Moderator Tool © 2020</div>
+        </div>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

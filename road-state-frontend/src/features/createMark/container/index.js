@@ -1,6 +1,7 @@
 import {connect} from 'react-redux';
 import CreateMarkScreen from '../formComponent/index';
 import {getCreateLocation, getSelectedLocation} from '../modules/reducer';
+import {hideSpinner} from '../../auth/registration/modules/reducer';
 
 const mapStateToProps = state => ({
   resultTypes: state.drawer.resultTypes || {
@@ -16,9 +17,10 @@ const mapStateToProps = state => ({
   },
   chooseLocation: state.markCreate.chooseLocation || {},
   selectedLocation: state.markCreate.selectedLocation || {},
+  isLoading: state.register.isLoading || false,
 });
 
-const mapActionCreators = {getCreateLocation, getSelectedLocation};
+const mapActionCreators = {getCreateLocation, getSelectedLocation, hideSpinner};
 
 const CreateMarkContainer = connect(
   mapStateToProps,

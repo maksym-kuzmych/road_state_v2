@@ -3,7 +3,7 @@ import {Text, View, Image, StyleSheet} from 'react-native';
 import {IMAGE} from '../../../common/constants/image';
 import {strings} from '../../resources/resources';
 
-export default function Information() {
+export default function Information({relevance}) {
   return (
     <View style={styles.container}>
       <Text style={styles.headerText}>
@@ -46,7 +46,7 @@ export default function Information() {
             <Text style={[styles.text, {fontWeight: 'bold'}]}>
               {strings.currentMark.lblCondition}:{' '}
             </Text>
-            <Text style={styles.text}>Bad</Text>
+            <Text style={styles.text}>Ужасное</Text>
           </Text>
         </View>
         <View style={styles.itemContainer}>
@@ -55,7 +55,7 @@ export default function Information() {
             <Text style={[styles.text, {fontWeight: 'bold'}]}>
               {strings.currentMark.lblRelevance}:{' '}
             </Text>
-            <Text style={styles.text}>10</Text>
+            <Text style={styles.text}>{relevance}</Text>
           </Text>
         </View>
       </View>

@@ -1,9 +1,4 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
-
-/* Set padding to keep content from hitting the edges */
+﻿/* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
@@ -21,4 +16,193 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.logo {
+    font-family: Tahoma, sans-serif;
+    font-weight: bold;
+    font-size: 45px;
+    color: white;
+    text-transform: uppercase;
+    text-shadow: 0 0 5px black;
+    position: relative;
+    top: 17px;
+    left: 10px;
+}
+
+header {
+    width: 100%;
+    height: 220px;
+    background: url(/Content/Header-Background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    vertical-align: middle;
+}
+
+.logo-container {
+    width: 48%;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    top: 20%;
+}
+
+.menu-bar * {
+    margin: 0;
+    padding: 0;
+    color: white;
+    background-color: #3b6978;
+    font-family: sans-serif;
+    font: Arial;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.menu-bar ul, ol {
+    list-style: none;
+}
+
+.menu-bar > ul {
+    display: flex;
+}
+
+    .menu-bar > ul li a {
+        display: block;
+        padding: 15px 25px 15px 25px;
+    }
+
+.menu-bar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+    .menu-bar > ul li a:hover {
+        text-decoration: none;
+        color: white;
+        background-color: #00b894;
+        box-shadow: 1px 5px 18px -5px black;
+        transition: all 0.3s ease;
+    }
+
+    .menu-bar > ul li {
+        position: relative;
+    }
+
+footer {
+    background-color: #204051;
+    text-decoration: none;
+    position: relative;
+    bottom: 0;
+}
+
+.info {
+    min-height: 170px;
+    width: 23%;
+    margin-top: 30px;
+    padding-left: 20px;
+    vertical-align: top;
+    border-right: 1px solid darkgrey;
+    display: inline-block;
+}
+
+    .info:last-child {
+        border-right: none;
+    }
+
+.info-block {
+    border-top: 1px solid darkgrey;
+    border-bottom: 1px solid darkgrey;
+    height: 240px;
+    width: 100%;
+}
+
+    .info-block p {
+        padding: 5px;
+        font-family: sans-serif;
+        color: floralwhite;
+        text-transform: uppercase;
+    }
+
+    .info-block i {
+        padding-right: 10px;
+        color: #00b894;
+    }
+
+.info a {
+    color: rgb(87,119,126);
+    padding: 5px;
+    font-family: sans-serif;
+    display: block;
+    text-decoration: none;
+}
+
+.info .choose:hover {
+    color: white;
+}
+
+.credits {
+    height: 60px;
+    margin-left: 15px;
+    color: #dae1e7;
+    font-family: sans-serif;
+    justify-content: center;
+    vertical-align: middle;
+}
+
+.page-container {
+    height: 450px;
+}
+
+.mark-preview {
+    display: inline-block;
+    height: 210px;
+    width: 320px;
+    position: relative;
+    background-color: white;
+    transition: all .2s ease-in-out;
+    border-radius: 10px;
+    border: 1.5px solid #7D7D7D;
+    margin-right: 20px;
+}
+
+.mark-preview:hover {
+    transform: scale(1.05);
+}
+
+.mark-preview-header {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    background-color: #00b894;
+    height: 20%;
+    text-align: center
+}
+
+.mark-preview-header-text {
+    position:relative;
+    top: 10%;
+    font-size: 16pt;
+    font-family: Calibri;
+    -webkit-text-stroke: 1px #00263b;
+    color: white;
+    font-weight: bold;
+}
+
+.mark-preview-footer {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background-color: #fff;
+    height: 20%;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid #7D7D7D;
 }

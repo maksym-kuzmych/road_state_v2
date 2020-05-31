@@ -14,7 +14,7 @@ import ConditionDropdown from '../components/ConditionDropdown';
 import Attachment from '../components/Attachment';
 import LocationPicker from '../components/LocationPicker';
 import Spinner from '../../spinner/formComponent/index';
-import {strings} from '../../resources/resources'
+import {strings} from '../../resources/resources';
 
 export default class CreateMarkScreen extends React.Component {
   render() {
@@ -23,8 +23,9 @@ export default class CreateMarkScreen extends React.Component {
       resultTypes,
       getCreateLocation,
       selectedLocation,
+      hideSpinner,
     } = this.props;
-    
+
     return (
       <SafeAreaView style={{flex: 1}}>
         <CustomHeader title={strings.newMark.header} navigation={navigation} />
@@ -49,7 +50,8 @@ export default class CreateMarkScreen extends React.Component {
             flexDirection: 'row',
           }}>
           <TouchableOpacity
-            style={[styles.buttonContainer, {backgroundColor: '#0080ff'}]}>
+            style={[styles.buttonContainer, {backgroundColor: '#0080ff'}]}
+            onPress={() => hideSpinner(true)}>
             <Text style={styles.btnText}>{strings.newMark.btnCreate}</Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -68,7 +70,7 @@ const styles = StyleSheet.create({
     width: '50%',
     alignItems: 'center',
     justifyContent: 'center',
-    opacity: 0.75,
+    // opacity: 0.75,
   },
   btnText: {
     fontSize: 20,

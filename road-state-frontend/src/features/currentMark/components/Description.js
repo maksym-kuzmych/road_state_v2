@@ -13,7 +13,7 @@ export default function Description() {
           style={styles.text}
           multiline={true}
           numberOfLines={3}
-          value="Random Random Random Random Random Random Random Random"
+          value="Данный участок имеет множественные ямы на продолжительной расстоянии дороги."
           editable={false}
         />
       </View>

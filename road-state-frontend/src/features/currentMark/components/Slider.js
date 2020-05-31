@@ -12,7 +12,8 @@ import {strings} from '../../resources/resources';
 
 const {width} = Dimensions.get('window');
 const height = width * 0.6;
-const images = [IMAGE.ROAD_1, IMAGE.ROAD_2, IMAGE.ROAD_3, IMAGE.ROAD_4];
+// const images = [IMAGE.ROAD_1, IMAGE.ROAD_2, IMAGE.ROAD_3, IMAGE.ROAD_4];
+const images = [IMAGE.PIT_1, IMAGE.PIT_2, IMAGE.PIT_3];
 
 export default function Slider() {
   const [active, setActive] = useState(0);

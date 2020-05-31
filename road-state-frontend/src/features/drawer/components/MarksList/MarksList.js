@@ -27,8 +27,8 @@ export default function MarksList({directionInformation}) {
             />
           </View>
           <Body style={styles.textBodyContainer}>
-            <Text style={styles.primaryText}>Radnom</Text>
-            <Text style={styles.secondaryText}>Radnom Location, East 23 st.</Text>
+            <Text style={styles.primaryText}>M03</Text>
+            <Text style={styles.secondaryText}>M03, Donets'ka oblast, Ukraine</Text>
           </Body>
         </View>
         {/* <View style={styles.listItemContaier}>

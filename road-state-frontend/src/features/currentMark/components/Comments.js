@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
+  Keyboard,
 } from 'react-native';
 import {Body} from 'native-base';
 import {IMAGE as Photo} from '../../../common/constants/testPhotos';
@@ -17,40 +18,53 @@ export default class Comments extends React.Component {
     super(props);
     this.state = {
       inputComment: '',
+      addComment: false,
+      addedComment: '',
     };
   }
 
   render() {
-    const {inputComment} = this.state;
+    const {inputComment, addComment, addedComment} = this.state;
+    const {isLogedIn} = this.props;
     return (
       <View style={styles.container}>
         <Text style={styles.headerText}>
           {strings.currentMark.lblComments}:{' '}
-          <Text style={styles.commentsNumber}>20</Text>
+          <Text style={styles.commentsNumber}>1</Text>
         </Text>
-        <View style={styles.inputContainer}>
-          <View style={styles.photoContainer}>
-            <Image style={styles.photo} source={Photo.ROAD_1} />
-          </View>
-          <TextInput
-            style={styles.text}
-            placeholder={strings.currentMark.leaveCommentPlaceholder}
-            onChangeText={text => this.setState({inputComment: text})}
-            value={inputComment}
-            maxLength={40}
-          />
-          {inputComment !== '' ? (
-            <View style={styles.sendIconContainer}>
-              <TouchableOpacity>
-                <Image
-                  style={styles.sendIcon}
-                  source={IMAGE.ICON_SEND_COMMENT}
-                  tintColor="#40bad5"
-                />
-              </TouchableOpacity>
+        {isLogedIn === true && (
+          <View style={styles.inputContainer}>
+            <View style={styles.photoContainer}>
+              <Image style={styles.photo} source={Photo.DEFAULT_PROFILE} />
             </View>
-          ) : null}
-        </View>
+            <TextInput
+              style={styles.text}
+              placeholder={strings.currentMark.leaveCommentPlaceholder}
+              onChangeText={text => this.setState({inputComment: text})}
+              value={inputComment}
+              maxLength={40}
+            />
+            {inputComment !== '' ? (
+              <View style={styles.sendIconContainer}>
+                <TouchableOpacity
+                  onPress={() => {
+                    Keyboard.dismiss;
+                    this.setState({
+                      addedComment: inputComment,
+                      addComment: true,
+                      inputComment: '',
+                    });
+                  }}>
+                  <Image
+                    style={styles.sendIcon}
+                    source={IMAGE.ICON_SEND_COMMENT}
+                    tintColor="#40bad5"
+                  />
+                </TouchableOpacity>
+              </View>
+            ) : null}
+          </View>
+        )}
         <View style={styles.commentsSection}>
           <View style={styles.commentContainer}>
             <View style={styles.photoContainer}>
@@ -58,15 +72,27 @@ export default class Comments extends React.Component {
             </View>
             <Body style={styles.textBodyContainer}>
               <Text style={styles.primaryText}>
-                Author Name <Text style={styles.dot}>⬤</Text> Comment Creation
-                Date
+                Driver1980 <Text style={styles.dot}>⬤</Text> 15.05.2020
               </Text>
               <Text style={styles.secondaryText}>
-                Comment Body Comment Body Comment Body Comment Body Comment Body
-                Comment Body
+                Поддерживаю автора, сам неоднократно проезжал через данное место
+                и это сущий кошмар. Нужно что-то с этим делать!
               </Text>
             </Body>
           </View>
+          {addComment === true ? (
+            <View style={styles.commentContainer}>
+              <View style={styles.photoContainer}>
+                <Image style={styles.photo} source={Photo.DEFAULT_PROFILE} />
+              </View>
+              <Body style={styles.textBodyContainer}>
+                <Text style={styles.primaryText}>
+                  Maksym <Text style={styles.dot}>⬤</Text> 31.05.2020
+                </Text>
+                <Text style={styles.secondaryText}>{addedComment}</Text>
+              </Body>
+            </View>
+          ) : null}
         </View>
       </View>
     );

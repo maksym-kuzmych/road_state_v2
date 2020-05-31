@@ -1,7 +1,8 @@
 import * as React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import MapContainer from '../container/index';
-import CurrentMarkScreen from '../../currentMark/index';
+//import CurrentMarkScreen from '../../currentMark/index';
+import CurrentMarkContainer from '../../currentMark/container/index';
 import CreateMarkContainer from '../../createMark/container/index';
 
 const navOptionHandler = () => ({
@@ -20,7 +21,8 @@ export default function MapStack() {
       />
       <StackMap.Screen
         name="CurrentMark"
-        component={CurrentMarkScreen}
+        // component={CurrentMarkScreen}
+        component={CurrentMarkContainer}
         options={navOptionHandler}
       />
       <StackMap.Screen
